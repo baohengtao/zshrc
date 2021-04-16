@@ -1,14 +1,12 @@
-export ZSH_Plug="$HOME/.zsh_plug"  # plugin 存储位置
+export ZSH_Plug=$HOME/.zsh_plug  # plugin 存储位置
 export OMZ=$ZSH_Plug/.oh-my-zsh
 export ATG=$ZSH_Plug/.antigen.zsh
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 
 # load oh-my-zsh plugins
 plugins=(
   history #suggestions
-  zsh-interactive-cd fasd   #navigation
+  zsh-interactive-cd #fasd   #navigation
   cp copyfile copydir copybuffer   #copy
   mosh docker pip #application
   git docker-compose vscode    #alias   
