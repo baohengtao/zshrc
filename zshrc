@@ -2,14 +2,7 @@ export ZSH_DIR="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的
 export ZSH=$ZSH_DIR/.oh-my-zsh
 export ANTIGEN_PATH=$ZSH_DIR/.antigen.zsh
 
-files=(
-  theme.zsh  env_private.zsh env.zsh
-  keybind.zsh
-  ) 
-for file in $files; do
-  filepath=$ZSH_DIR/$file
-  [[ -e $filepath ]] && source $filepath
-done
+
 
 # load oh-my-zsh plugins
 plugins=(
@@ -19,7 +12,6 @@ plugins=(
   mosh docker pip #application
   git docker-compose vscode    #alias   
   colored-man-pages man  
-  zsh-autosuggestions  
   )
 if ! [[ -e $ZSH ]]; then
    git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
@@ -48,6 +40,13 @@ antigen apply
 
 
 
-
-source $ZSH_DIR/aliases.zsh
+files=(
+  theme.zsh  env_private.zsh env.zsh
+  keybind.zsh aliases.zsh
+  ) 
+for file in $files; do
+  filepath=$ZSH_DIR/$file
+  [[ -e $filepath ]] && source $filepath
+done
+source $ZSH_DIR/
 
