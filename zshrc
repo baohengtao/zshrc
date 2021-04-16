@@ -2,10 +2,9 @@ export ZSH_DIR="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的
 export ZSH=$ZSH_DIR/.oh-my-zsh
 export ANTIGEN_PATH=$ZSH_DIR/.antigen.zsh
 
-# load file
 files=(
   theme.zsh  env_private.zsh env.zsh
-  aliases.zsh keybind.zsh
+  keybind.zsh
   ) 
 for file in $files; do
   filepath=$ZSH_DIR/$file
@@ -50,5 +49,5 @@ antigen apply
 
 
 
-
+source $ZSH_DIR/aliases.zsh
 
