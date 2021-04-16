@@ -6,12 +6,13 @@ export ATG=$ZSH_Plug/.antigen.zsh
 # load oh-my-zsh plugins
 plugins=(
   history #suggestions
-  zsh-interactive-cd #fasd   #navigation
+  zsh-interactive-cd   #navigation
   cp copyfile copydir copybuffer   #copy
   mosh docker pip #application
-  git docker-compose vscode    #alias   
-  colored-man-pages man  
+  git docker-compose vscode  #alias   
+  colored-man-pages man   fzf
   )
+
 
 
 if ! [[ -e $OMZ ]]; then
