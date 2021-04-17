@@ -1,6 +1,0 @@
-empty/
-*private*
-/**/.git/
-.*
-!.gitignore
-*.zwc
