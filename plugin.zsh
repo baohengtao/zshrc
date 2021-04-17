@@ -2,24 +2,6 @@ export ZSH_Plug=$HOME/.zsh_plug  # plugin 存储位置
 
 
 
-# load oh-my-zsh plugins
-
-load_omz(){
-  if ! [[ -e $ZSH_Plug/.oh-my-zsh ]]; then
-    git clone  https://github.com/ohmyzsh/ohmyzsh.git $ZSH_Plug/.oh-my-zsh
-  fi
-
-  plugins=(
-    history #suggestions
-    zsh-interactive-cd   #navigation
-    cp copyfile copydir copybuffer   #copy
-    mosh docker pip #application
-    git docker-compose vscode  #alias   
-    colored-man-pages man   fzf
-    )
-  source $ZSH_Plug/.oh-my-zsh/oh-my-zsh.sh
-}
-
 init_zinit(){
   if [[ ! -f $ZSH_Plug/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -31,41 +13,51 @@ init_zinit(){
   source "$ZSH_Plug/.zinit/bin/zinit.zsh"
 }
 
-load_zinit(){
-  zinit load zdharma/history-search-multi-word
-  zinit light zdharma/fast-syntax-highlighting 
-  zinit load  zsh-users/zsh-history-substring-search 
-  zinit load  zsh-users/zsh-autosuggestions  
-  zinit light denysdovhan/spaceship-prompt
+load_theme(){
+  if [[ $THEME == pure ]]; then
+    zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+    zinit light sindresorhus/pure
+  else
+    zinit light denysdovhan/spaceship-prompt 
+  fi
+}
+
+load_plug(){
+  zinit wait lucid for \
+        zdharma/history-search-multi-word \
+        zsh-users/zsh-history-substring-search \
+        zsh-users/zsh-autosuggestions \
+        zdharma/fast-syntax-highlighting 
+  
+}
+
+load_omz(){
+  plugins=(
+    history 
+    #suggestions
+    zsh-interactive-cd   #navigation
+    cp copyfile copydir copybuffer   #copy
+    mosh  pip #application
+    git  vscode  #alias 
+    colored-man-pages man   fzf
+    autojump fasd
+    )
+  for pl in "${plugins[@]}" ; do
+    zinit wait lucid for "OMZP::${pl}"
+  done
+}
+
+
+post_zinit(){
   autoload -Uz _zinit
   (( ${+_comps} )) && _comps[zinit]=_zinit
 }
 
-sys_plugin(){
-  if [ -f /usr/local/etc/profile.d/autojump.sh ]; then
-  . /usr/local/etc/profile.d/autojump.sh
-  else
-    echo "\e[33m Warn: Autojump not fund\e[0m" 
-    echo 'Run "brew install autojump" '
-    echo 'Or you can run "install_brew_package" to install all missings.'
-  fi
 
-
-  if [ ${+commands[fasd]} ]; then
-    eval "$(fasd --init auto)"
-  else
-    echo "\e[33m Warn: fasd is not installed \e[0m"
-    echo 'Run `brew install autojump` please'
-    echo 'Or you can run "install_brew_package" to install all missings.'
-
-
-  fi
-}
-
-
-
-
-load_omz
 init_zinit
-load_zinit
-sys_plugin
+load_theme
+load_plug
+load_omz
+post_zinit
+
+

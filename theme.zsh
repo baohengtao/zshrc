@@ -1,5 +1,6 @@
+THEME=pure # spaceship
 
-
+# for spaceship
 SPACESHIP_TIME_SHOW=false
 SPACESHIP_USER_SHOW=false
 SPACESHIP_HOST_SHOW=false
