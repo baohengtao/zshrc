@@ -14,6 +14,6 @@ done
 
 zshrc_update(){
   git -C ${current_dir} push
-  git -C ${current_dir} fetch
+  git -C ${current_dir} pull
 }
 
