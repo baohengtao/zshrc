@@ -1,3 +1,9 @@
+# cd
+setopt autocd
+alias ...='cd ../../'
+alias d="cd -"
+alias less="less -r"
+
 # fasd alias
 alias v='f -e "$EDITOR"'
 alias o='a -e xdg-open'
@@ -7,6 +13,7 @@ alias o='a -e xdg-open' # quick opening files with xdg-open
 # self-defined
 alias dcursor='echo -ne "\e[5 q"'
 alias typora="open -a typora" 
+
 #program
 alias vi=vim
 alias vim=nvim

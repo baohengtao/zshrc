@@ -1,18 +1,24 @@
-THEME=pure # spaceship
 
-# for spaceship
-SPACESHIP_TIME_SHOW=false
-SPACESHIP_USER_SHOW=false
-SPACESHIP_HOST_SHOW=false
-SPACESHIP_DIR_TRUNC=0
-SPACESHIP_DIR_TRUNC_REPO=false
+prompt_theme_list=(
+  dracula/zsh
+  denysdovhan/spaceship-prompt
+  sindresorhus/pure
+)
+THEME_CODE=${THEME_CODE:-Dracula}
+THEME_PROMPT=${THEME_PROMPT:-sindresorhus/pure}
 
-BAT_THEME="Dracula"
+if [[ THEME_PROMPT == denysdovhan/spaceship-prompt ]]; then
+  SPACESHIP_TIME_SHOW=false
+  SPACESHIP_USER_SHOW=false
+  SPACESHIP_HOST_SHOW=false
+  SPACESHIP_DIR_TRUNC=0
+  SPACESHIP_DIR_TRUNC_REPO=false
+fi
 
-EDITOR=vi
-BROWSER=safari
-XIVIEWER=pixea
-
+alias pixea="open -a pixea" 
+EDITOR=${EDITOR:-vi}
+BROWSER=${BROSER:-safari}
+XIVIEWER=${XIVIEWER:-open}
 
 autoload -Uz is-at-least
 if is-at-least 4.2.0; then

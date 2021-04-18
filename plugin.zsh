@@ -14,34 +14,42 @@ init_zinit(){
 }
 
 load_theme(){
-  if [[ $THEME == pure ]]; then
+  if [[ $THEME_PROMPT == sindresorhus/pure ]]; then
     zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-    zinit light sindresorhus/pure
-  else
-    zinit light denysdovhan/spaceship-prompt 
   fi
+  zinit light $THEME_PROMPT
+  zinit wait lucid for zdharma/fast-syntax-highlighting 
 }
 
 load_plug(){
   zinit wait lucid for \
         zdharma/history-search-multi-word \
-        zsh-users/zsh-history-substring-search \
-        zdharma/fast-syntax-highlighting 
-  
+        zsh-users/zsh-history-substring-search  \
+        ael-code/zsh-colored-man-pages
   zinit load zsh-users/zsh-autosuggestions
   
+}
+load_navi(){
+   plugins=(
+    zsh-interactive-cd   #depend on fzf
+    autojump 
+    )
+  for pl in "${plugins[@]}" ; do
+    zinit wait lucid for "OMZP::${pl}"
+  done
+
 }
 
 load_omz(){
   plugins=(
     history 
     #suggestions
-    zsh-interactive-cd   #navigation
     cp copyfile copydir copybuffer   #copy
     mosh  pip #application
     git  vscode  #alias 
-    colored-man-pages man   fzf
-    autojump fasd
+    # colored-man-pages 
+    fzf
+    # fasd
     command-not-found
     )
   for pl in "${plugins[@]}" ; do
@@ -59,6 +67,7 @@ post_zinit(){
 init_zinit
 load_theme
 load_plug
+load_navi
 load_omz
 post_zinit
 

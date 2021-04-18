@@ -1,5 +1,5 @@
   PACKAGES_LIST=(
-    bat fzf autojump 
+    bat fzf autojump fd
   )
 
 
@@ -9,7 +9,7 @@ install_package(){
   if [[ $(uname -m) == "armv7l" ]]; then
     pkg_manager="sudo apt"
   else
-    pkg_manager="brew"
+    pkg_manager="brew install"
   fi
 
   if  [[ ${pkg_manager} == "brew" && -z "$(command -v brew)" ]]; then
@@ -20,8 +20,8 @@ install_package(){
   fi
 
   for pkg in ${PACKAGES_LIST[@]}; do
-    echo "$pkg_manager install ${pkg}"
-    eval "$pkg_manager install ${pkg}"
+    echo "${pkg_manager}  ${pkg}"
+    eval "${pkg_manager}  ${pkg}"
   done
 }
 
