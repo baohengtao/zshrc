@@ -1,1 +1,1 @@
-bindkey '^l' autosuggest-accept # for zsh-autosuggestions
+bindkey '^i' autosuggest-accept # for zsh-autosuggestions

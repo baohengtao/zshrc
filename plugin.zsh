@@ -26,8 +26,9 @@ load_plug(){
   zinit wait lucid for \
         zdharma/history-search-multi-word \
         zsh-users/zsh-history-substring-search \
-        zsh-users/zsh-autosuggestions \
         zdharma/fast-syntax-highlighting 
+  
+  zinit load zsh-users/zsh-autosuggestions
   
 }
 
@@ -41,6 +42,7 @@ load_omz(){
     git  vscode  #alias 
     colored-man-pages man   fzf
     autojump fasd
+    command-not-found
     )
   for pl in "${plugins[@]}" ; do
     zinit wait lucid for "OMZP::${pl}"
