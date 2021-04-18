@@ -12,4 +12,8 @@ for file in $files; do
   [[ -e $filepath ]] && source $filepath
 done
 
+zshrc_update(){
+  git -C ${current_dir} push
+  git -C ${current_dir} fetch
+}
 
