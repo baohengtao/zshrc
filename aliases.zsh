@@ -1,3 +1,19 @@
+# Allow SSH tab completion for mosh hostnames
+
+compdef mosh=ssh
+
+
+# brew
+alias bs='brew search'
+alias bsd='brew search --desc'
+alias bis='brew install'
+alias bisc='brew install --cask'
+alias brewup='brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor'
+# history
+alias h='history'
+alias hs='history | grep'
+alias hsi='history | grep -i'
+
 # cd
 setopt autocd
 alias ...='cd ../../'
@@ -27,7 +43,7 @@ alias c=clear
 #better default
 alias sudo='sudo -E' #keep user environment
 alias rm="trash -v"
-alias mv="mv -v"
+alias mv="mv -i -v"
 alias cp="cp -v"
 # ls
 alias ls='lsd'

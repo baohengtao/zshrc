@@ -9,7 +9,8 @@ setopt SHARE_HISTORY
 # exclde_list for fd
 exclude_list=(
   node_modules
-  .deploy_git .git  
+  .deploy_git .git 
+  .cache 
   '"*.nosync"' '"*conda*"'
   Library '"*.photoslibrary"'
   '"Virtual Machines.localized"'
@@ -18,17 +19,15 @@ exclude_list=(
 for ef in "${exclude_list[@]}"; do
   EXCLUDE="$EXCLUDE --exclude ${ef}"
 done
-
 alias fd="fd $EXCLUDE"
+
 # fzf
 export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border --multi --info=inline'
 export FZF_COMPLETION_TRIGGER='>'
-# search file; follow symbolic link; include hidden files but exclude .git
-export FZF_DEFAULT_COMMAND="fd --type file --follow -IH $EXCLUDE"
+export FZF_DEFAULT_COMMAND="fd --type file -I $EXCLUDE"
+_fzf_compgen_path() { fd -I   . "$1"}
+_fzf_compgen_dir() { fd --type d -I    . "$1"}
 
-#  使用 fd 生产路径
-_fzf_compgen_path() { fd -HI $EXCLUDE  . "$1"}
-_fzf_compgen_dir() { fd -HI --type d $EXCLUDE  . "$1"}
 # 对 部分命令的补全 显示预览
 _fzf_comprun() {
   local command=$1
@@ -38,6 +37,8 @@ _fzf_comprun() {
     cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
     export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
     ssh)          fzf "$@" --preview 'dig {}' ;;
+    bat)            fzf "$@" --preview 'bat {}';;
     *)            fzf "$@" ;;
   esac
 }
+
