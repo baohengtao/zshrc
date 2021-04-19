@@ -1,9 +1,6 @@
-export PlugDir=$HOME/.plugin  # plugin 存储位置
-export ZINIT_HOME=$PlugDir/zinit
-declare -A ZINIT
 
 init_zinit(){
-  export ZINIT[HOME_DIR]=$ZINIT_HOME
+ 
   if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$ZINIT_HOME" && command chmod g-rwX "$ZINIT_HOME"

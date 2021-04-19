@@ -1,11 +1,3 @@
-## history
-DATA_PATH=${DATA_PATH:-"$HOME/.data"}
-HISTFILE=$DATA_PATH/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-setopt SHARE_HISTORY
-
 # exclde_list for fd
 exclude_list=(
   node_modules
@@ -27,8 +19,6 @@ export FZF_COMPLETION_TRIGGER='>'
 export FZF_DEFAULT_COMMAND="fd --type file -I $EXCLUDE"
 _fzf_compgen_path() { fd -I   . "$1"}
 _fzf_compgen_dir() { fd --type d -I    . "$1"}
-
-# 对 部分命令的补全 显示预览
 _fzf_comprun() {
   local command=$1
   shift
