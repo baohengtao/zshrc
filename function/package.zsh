@@ -2,10 +2,22 @@
     bat fzf autojump fd
   )
 
+set_url(){
+  if [[ "$(uname -s)" == "Linux" ]]; then 
+    BREW_TYPE="linuxbrew"
+  else 
+    BREW_TYPE="homebrew"
+  fi
+  export REMOTE_URL=https://mirrors.tuna.tsinghua.edu.cn
+  export HOMEBREW_BREW_GIT_REMOTE="${REMOTE_URL}/git/homebrew/brew.git"
+  export HOMEBREW_CORE_GIT_REMOTE="${REMOTE_URL}/git/homebrew/${BREW_TYPE}-core.git"
+  export HOMEBREW_BOTTLE_DOMAIN="${REMOTE_URL}/${BREW_TYPE}-bottles"
+  }
 
 # Install brew packages if brew is installed,
 # else install brew then packages.
 install_package(){
+  set_url
   if [[ $(uname -m) == "armv7l" ]]; then
     pkg_manager="sudo apt"
   else
@@ -26,19 +38,10 @@ install_package(){
 }
 
 
-if [[ "$(uname -s)" == "Linux" ]]; then 
-  BREW_TYPE="linuxbrew"
-else 
-  BREW_TYPE="homebrew"
-fi
-export REMOTE_URL=https://mirrors.tuna.tsinghua.edu.cn
-export HOMEBREW_BREW_GIT_REMOTE="${REMOTE_URL}/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="${REMOTE_URL}/git/homebrew/${BREW_TYPE}-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="${REMOTE_URL}/${BREW_TYPE}-bottles"
-
 
 
 brew_install(){
+  set_url
   git clone --depth=1 "${REMOTE_URL}/git/homebrew/install.git" brew-install
   /bin/bash brew-install/install.sh
   rm -rf brew-install
