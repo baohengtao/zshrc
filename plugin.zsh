@@ -11,7 +11,7 @@ zplug "plugins/colored-man-pages", from:"oh-my-zsh"
 
 
 ## git
-# zplug "plugins/git", from:"oh-my-zsh"
+zplug "plugins/git", from:"oh-my-zsh"
 zplug "bigH/git-fuzzy", as:"command", use:"bin/git-fuzzy"
 zplug "wfxr/forgit"
 

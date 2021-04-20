@@ -1,3 +1,9 @@
+# self-defined
+alias dcursor='echo -ne "\e[5 q"'
+alias typora="open -a typora"
+alias pixea="open -a pixea" 
+
+
 #shorthand
 alias s=neofetch # s means system
 alias cs=cowsay
@@ -25,6 +31,7 @@ alias bsd='brew search --desc'
 alias bis='brew install'
 alias bisc='brew install --cask'
 alias brewup='brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor'
+
 # history
 alias h='history'
 alias hs='history | grep'
@@ -49,7 +56,7 @@ alias dud='du -d 1 -h'
 alias duf='du -sh *'
 
 
-alias sortnr='sort -n -r'
+
 
 
 
@@ -91,10 +98,6 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 
 
 
-alias pixea="open -a pixea" 
-EDITOR=${EDITOR:-vi}
-BROWSER=${BROSER:-safari}
-XIVIEWER=${XIVIEWER:-open}
 
 autoload -Uz is-at-least
 if is-at-least 4.2.0; then
