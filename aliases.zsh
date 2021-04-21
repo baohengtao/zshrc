@@ -9,6 +9,7 @@ alias cp="cp -v"
 alias trash="trash -v"
 alias trash-empty="trash-empty 10"
 alias trash-put="trash-put -v"
+alias top='htop'
 # trash file
 alias rm='echo "use trash-cli will be safer."'
 
@@ -23,10 +24,10 @@ alias sf="s -f"
 
 alias z="fasd_cd -d"
 alias j="z -i"
-alias jj="j -B 'native current_folder'"
-alias jc="j -b 'native current_folder'"
-alias jd="j -b 'native desk_folder'"
-alias jh="j -B 'native home_folder' "
+alias jj="j -B  current_folder"
+alias jc="j -b  current_folder"
+alias jd="j -b  desk_folder "
+alias jh="j -B  home_folder "
 alias o="a -e open"
 alias v="f -e nvim"
 alias c="f -e code"
@@ -83,14 +84,20 @@ alias pip='pip3'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
 
+# git-fuzzy
+alias gf="git fuzzy"
+
 
 # forgit
-alias gd="forgit:diff"
-alias ga="forgit:add"
+alias gd="forgit::diff"
+alias ga="forgit::add"
 alias gl="forgit::log"
 # git
 alias g=git
+alias gs='git status'
+alias gss='git status -s'
 alias gca="git commit -a -v"
+alias gcam="git commit -a -v -m"
 alias gb="git branch"
 alias gbD="git branch -D"
 alias gbd="git branch -d"
