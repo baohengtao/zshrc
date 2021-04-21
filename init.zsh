@@ -1,13 +1,15 @@
 autoload -Uz compinit # init completion system
 compinit
 current_dir="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的pattern
+ 
 
 files=(
   parameter.zsh
-  aliases.zsh
   function/package.zsh
+  # function/typora.zsh
   plugin.zsh
   fzf.zsh
+  aliases.zsh
   )
 
 

@@ -1,53 +1,61 @@
 # self-defined
 alias dcursor='echo -ne "\e[5 q"'
-alias typora="open -a typora"
-alias pixea="open -a pixea" 
+alias find='echo "oh, noope, you should use fd"'
+alias fde="fd --no-ignore-vcs"
+#better default
+alias sudo='sudo -E' #keep user environment
+alias mv="mv -i -v"
+alias cp="cp -v"
+alias trash="trash -v"
+alias trash-empty="trash-empty 10"
+alias trash-put="trash-put -v"
+# trash file
+alias rm='echo "use trash-cli will be safer."'
 
-# git
-alias g=git
-alias gca="git commit -a -v"
-alias gb="git branch"
-alias gbD="git branch -D"
-alias gbd="git branch -d"
-alias gba='git branch -a'
-alias gco="git checkout"
-alias gcb="git checkout -b"
-alias gp="git push"
-alias gd="gd"
-alias glg='git log --stat'
-alias glgg='git log --graph'
-alias glgga='git log --graph --decorate --all'
-alias glgm='git log --graph --max-count=10'
-alias glgp='git log --stat -p'
-alias glo='git log --oneline --decorate'
-alias glod='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
-alias glods='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'' --date=short'
-alias glog='git log --oneline --decorate --graph'
-alias gloga='git log --oneline --decorate --graph --all'
-alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
-alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
-alias glols='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --stat'
-alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+# fasd
+alias a="fasd -a"
+alias d="fasd -d"
+alias f="fasd -f"
+
+alias s="fasd -si"
+alias sd="s -d"
+alias sf="s -f"
+
+alias z="fasd_cd -d"
+alias j="z -i"
+alias jj="j -B 'native current_folder'"
+alias jc="j -b 'native current_folder'"
+alias jd="j -b 'native desk_folder'"
+alias jh="j -B 'native home_folder' "
+alias o="a -e open"
+alias v="f -e nvim"
+alias c="f -e code"
+alias t="a -e typora"
+alias p="a -e pixea -B 'native current_folder'"
+
 
 
 #shorthand
-alias s=neofetch # s means system
+alias neo=neofetch # s means system
 alias cs=cowsay
 alias ra=ranger
-alias c=clear
 
 # cd
 setopt autocd
 alias ...='cd ../../'
-alias d="cd -"
 alias less="less -r"
 
 # ls
-alias exa='exa --icons --git'
-alias ll='lsd --blocks permission,links,user,group,size,date,name'
+alias exa='exa --icons --git --time-style iso'
+alias ll='exa -lhg --octal-permissions --no-permissions '
+alias la='ll -a'
 alias ldot='ll -d .*'
-alias la='ll -lA'   #long list,show almost all,show type,human readable
-alias lt='ll -t'   #long list,sorted by date,show type,human readable
+alias tree='exa -T -L 2'
+alias lt='ll -s time'
+# alias ll='lsd --blocks permission,links,user,group,size,date,name'
+# alias ldot='ll -d .*'
+# alias la='ll -lA'   #long list,show almost all,show type,human readable
+# alias lt='ll -t'   #long list,sorted by date,show type,human readable
 
 
 
@@ -69,18 +77,41 @@ alias vi=vim
 alias vim=nvim
 alias python='python3'
 alias pip='pip3'
-#better default
-alias sudo='sudo -E' #keep user environment
-alias rm="trash -v"
-alias mv="mv -i -v"
-alias cp="cp -v"
-
 
 
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
 
+
+# forgit
+alias gd="forgit:diff"
+alias ga="forgit:add"
+alias gl="forgit::log"
+# git
+alias g=git
+alias gca="git commit -a -v"
+alias gb="git branch"
+alias gbD="git branch -D"
+alias gbd="git branch -d"
+alias gba='git branch -a'
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gp="git push"
+alias glg='git log --stat'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glgp='git log --stat -p'
+alias glo='git log --oneline --decorate'
+alias glod='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
+alias glods='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'' --date=short'
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
+alias glols='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --stat'
+alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 
 
 
@@ -143,10 +174,10 @@ if is-at-least 4.2.0; then
   fi
 
   _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
-  for ft in $_media_fts; do alias -s $ft=mplayer; done
+  for ft in $_media_fts; do alias -s $ft='$Player'; done
 
   _open_fts=(md)
-   for ft in $_open_fts; do alias -s $ft=open; done
+   for ft in $_open_fts; do alias -s $ft='typora'; done
 
 
 fi

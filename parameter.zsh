@@ -15,7 +15,8 @@ setopt SHARE_HISTORY
 
 EDITOR=nvim
 BROWSER=open
-XIVIEWER=open
+XIVIEWER=pixea
+Player=iina
 
 # themes
 THEME_CODE=Dracula
