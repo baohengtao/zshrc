@@ -1,3 +1,5 @@
+# suffix aliases
+alias -s md=typora
 # self-defined
 alias dcursor='echo -ne "\e[5 q"'
 alias find='echo "oh, noope, you should use fd"'
@@ -18,6 +20,18 @@ alias a="fasd -a"
 alias d="fasd -d"
 alias f="fasd -f"
 
+alias ac="a -B current_folder"
+alias ah="a -B home_folder"
+
+alias v="f -e nvim"
+alias c="f -e code"
+alias o="ac -e open"
+alias t="ac -e typora"
+alias th="ah -e typora"
+alias p="ac -e pixea"
+alias ph="ah -e pixea"
+
+
 alias s="fasd -si"
 alias sd="s -d"
 alias sf="s -f"
@@ -26,13 +40,8 @@ alias z="fasd_cd -d"
 alias j="z -i"
 alias jj="j -B  current_folder"
 alias jc="j -b  current_folder"
-alias jd="j -b  desk_folder "
-alias jh="j -B  home_folder "
-alias o="a -e open"
-alias v="f -e nvim"
-alias c="f -e code"
-alias t="a -e typora"
-alias p="a -e pixea -B 'native current_folder'"
+alias jd="j -b  desk_folder"
+alias jh="j -B  home_folder"
 
 
 
@@ -183,9 +192,6 @@ if is-at-least 4.2.0; then
   _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
   for ft in $_media_fts; do alias -s $ft='$Player'; done
 
-  _open_fts=(md)
-   for ft in $_open_fts; do alias -s $ft='typora'; done
-
-
+ 
 fi
 
