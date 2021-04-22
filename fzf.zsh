@@ -15,7 +15,7 @@ alias fde="fd $EXCLUDE"
 
 # fzf
 export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border --multi --info=inline'
-export FZF_COMPLETION_TRIGGER='>'
+export FZF_COMPLETION_TRIGGER=';'
 export FZF_DEFAULT_COMMAND="fd --type file -I $EXCLUDE"
 export FZF_ALT_C_COMMAND="fd --type d -I $EXCLUDE . ~"
 _fzf_compgen_path() { fd -I   . "$1"}

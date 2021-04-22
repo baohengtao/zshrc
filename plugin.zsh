@@ -1,6 +1,6 @@
-
+ZPLUG_GIT=https://github.com/zplug/zplug
+[[ -d $ZPLUG_HOME ]] ||  git clone  $ZPLUG_GIT $ZPLUG_HOME
 source $ZPLUG_HOME/init.zsh
-
 # test
 zplug "djui/alias-tips"
 

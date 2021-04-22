@@ -7,6 +7,7 @@ export ZINIT[HOME_DIR]=$ZINIT_HOME
 
 ## history
 DATA_PATH=${DATA_PATH:-"$HOME/.data"}
+mkdir -p $DATA_PATH
 HISTFILE=$DATA_PATH/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
