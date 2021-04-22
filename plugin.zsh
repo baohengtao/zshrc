@@ -15,6 +15,7 @@ zplug "wfxr/forgit"
 
 
 ## 补全
+zplug "zsh-users/zsh-completions"
 zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
 zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)

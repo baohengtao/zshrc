@@ -6,3 +6,12 @@ if ! [[ -d $ZSH_DIR ]]; then
 fi
 source  $ZSH_DIR/init.zsh
 ```
+
+
+
+Needed Package: 
+
+- File: fzf fasd lsd ranger transh-cli
+- Develop: neovim  zsh git python
+- System: 
+

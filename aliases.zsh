@@ -1,5 +1,11 @@
 # suffix aliases
 alias -s md=typora
+# add color
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+alias ls='ls --color=auto'
+
 # self-defined
 alias cs='echo -ne "\e[5 q"'
 alias find='echo "oh, noope, you should use fd"'
