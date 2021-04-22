@@ -114,6 +114,7 @@ alias gba='git branch -a'
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gp="git push"
+alias gr="git remote"
 alias glg='git log --stat'
 alias glgg='git log --graph'
 alias glgga='git log --graph --decorate --all'
