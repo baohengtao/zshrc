@@ -1,7 +1,7 @@
 # suffix aliases
 alias -s md=typora
 # self-defined
-alias dcursor='echo -ne "\e[5 q"'
+alias cs='echo -ne "\e[5 q"'
 alias find='echo "oh, noope, you should use fd"'
 alias fde="fd --no-ignore-vcs"
 #better default
@@ -47,7 +47,7 @@ alias jh="j -B  home_folder"
 
 #shorthand
 alias neo=neofetch # s means system
-alias cs=cowsay
+alias cos=cowsay
 alias ra=ranger
 
 # cd
