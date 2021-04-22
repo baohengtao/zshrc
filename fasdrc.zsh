@@ -4,11 +4,11 @@ _FASD_SINK="$HOME/.data/fasd.log"
 #_FASD_BACKENDS="spotlight"
 
 home_folder(){
- fd -td . $HOME -x echo "$PWD/{}|1"
+ fd -td . "$HOME" -x echo "{}|1"
 }
 
 desk_folder(){
-  fd -td . $HOME/Desktop -x echo "$PWD/{}|1"
+  fd -td . "$HOME/Desktop" -x echo "{}|1"
 }
 
 current_folder(){
