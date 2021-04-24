@@ -27,6 +27,18 @@ zplug "plugins/fasd", from:"oh-my-zsh"
 zplug "plugins/command-not-found", from:"oh-my-zsh"
 zplug "djui/alias-tips"
 
+### vim
+#zplug "jeffreytse/zsh-vi-mode"
+#zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+#MODE_CURSOR_VIINS="#00ff00 blinking bar"
+#MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
+#MODE_CURSOR_VICMD="green block"
+#MODE_CURSOR_SEARCH="#ff00ff blinking underline"
+#MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
+#MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
+#unset MODE_CURSOR_DEFAULT
+
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

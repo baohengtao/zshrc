@@ -1,10 +1,18 @@
+alias rsync='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
+
 # suffix aliases
 alias -s md=typora
 # add color
-alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
-alias ls='ls --color=auto'
+
+if [[ $(uname) == "Darwin" ]]; then
+  alias diff=colordiff
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+  alias diff='diff --color=auto'
+fi
 
 # self-defined
 alias cs='echo -ne "\e[5 q"'
@@ -18,8 +26,6 @@ alias trash="trash -v"
 alias trash-empty="trash-empty 10"
 alias trash-put="trash-put -v"
 alias top='htop'
-# trash file
-alias rm='echo "use trash-cli will be safer."'
 
 # fasd
 alias a="fasd -a"
@@ -36,6 +42,8 @@ alias t="ac -e typora"
 alias th="ah -e typora"
 alias p="ac -e pixea"
 alias ph="ah -e pixea"
+alias i="a -e iina"
+alias ic="ac -e iina"
 
 
 alias s="fasd -si"
@@ -113,6 +121,7 @@ alias gs='git status'
 alias gss='git status -s'
 alias gca="git commit -a -v"
 alias gcam="git commit -a -v -m"
+alias gcamr="git commit -av -m 'regular update'"
 alias gb="git branch"
 alias gbD="git branch -D"
 alias gbd="git branch -d"
