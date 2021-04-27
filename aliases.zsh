@@ -1,3 +1,4 @@
+# file
 alias rsync='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 
 # suffix aliases
@@ -15,17 +16,27 @@ else
 fi
 
 # self-defined
+alias zshrc='source ~/.zshrc'
 alias cs='echo -ne "\e[5 q"'
 alias find='echo "oh, noope, you should use fd"'
 alias fde="fd --no-ignore-vcs"
-#better default
+alias c=clear
+# better default
 alias sudo='sudo -E' #keep user environment
 alias mv="mv -i -v"
 alias cp="cp -v"
+alias rm="rm -v"
 alias trash="trash -v"
 alias trash-empty="trash-empty 10"
 alias trash-put="trash-put -v"
 alias top='htop'
+
+# tmux
+alias td="tmux detach"
+alias tl="tmux ls"
+alias tn="tmux new -d -t"
+alias ta="tmux attach "
+alias tat="ta -t"
 
 # fasd
 alias a="fasd -a"
@@ -36,7 +47,7 @@ alias ac="a -B current_folder"
 alias ah="a -B home_folder"
 
 alias v="f -e nvim"
-alias c="f -e code"
+alias co="f -e code"
 alias o="ac -e open"
 alias t="ac -e typora"
 alias th="ah -e typora"
@@ -70,10 +81,12 @@ alias ...='cd ../../'
 alias less="less -r"
 
 # ls
-alias exa='exa --icons --git --time-style iso'
-alias ll='exa -lhg --octal-permissions --no-permissions '
-alias la='ll -a'
-alias ldot='ll -d .*'
+alias l='exa --icons --git --time-style iso'
+alias ll='l -lhg --octal-permissions --no-permissions '
+alias lla='ll -a'
+alias la='l -a'
+alias lldot='ll -d .*'
+alias ldot='l -d .*'
 alias tree='exa -T -L 2'
 alias lt='ll -s time'
 # alias ll='lsd --blocks permission,links,user,group,size,date,name'

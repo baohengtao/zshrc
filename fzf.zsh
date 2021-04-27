@@ -4,7 +4,7 @@ export FZF_COMPLETION_TRIGGER=';'
 export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border --multi --info=inline --exact'
 
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS --preview 'tree -C {} | head -200'"
-export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview '( ( [ ! -f {} ] && tree -C {} | head -200) || ( highlight -O ansi {} || cat {})  ) 2> /dev/null' "
+export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview '( ( [ ! -f {} ] && tree -C {} | head -200) || ( highlight -O ansi {} || bat {})  ) 2> /dev/null' "
 #export FZF_CTRL_R_OPTS=''
 #export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse" 
 # 设置执行命令

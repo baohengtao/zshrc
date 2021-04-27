@@ -1,14 +1,17 @@
+
+autoload -Uz compinit # init completion system
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION 
+
+# ## XDG
+# export XDG_CONFIG_HOME="$HOME/config"
+# export XDG_CACHE_HOME="$HOME/.cache"
+# export XDG_DATA_HOME="$HOME/.local/share"
+
 ## plugin path
-export PlugDir=$HOME/.plugin  # plugin 存储位置
-export ZINIT_HOME=$PlugDir/zinit
-export ZPLUG_HOME=$PlugDir/zplug
-declare -A ZINIT
-export ZINIT[HOME_DIR]=$ZINIT_HOME
+export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
 
 ## history
-DATA_PATH=${DATA_PATH:-"$HOME/.data"}
-mkdir -p $DATA_PATH
-HISTFILE=$DATA_PATH/.zsh_history
+HISTFILE=$XDG_DATA_HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
