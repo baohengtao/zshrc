@@ -125,7 +125,7 @@ alias duf='du -sh *'
 
 # git-fuzzy
 alias gf="git fuzzy"
-
+alias lg="lazygit"
 
 # forgit
 alias gd="forgit::diff"

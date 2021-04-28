@@ -16,12 +16,11 @@ zplug "wfxr/forgit"
 
 ## 补全
 zplug "zsh-users/zsh-completions"
-zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
+# zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
 zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ## 目录跳转
 zplug "plugins/fasd", from:"oh-my-zsh"
-# zplug "plugins/autojump", from:"oh-my-zsh"
 
 ## mix
 zplug "plugins/command-not-found", from:"oh-my-zsh"
