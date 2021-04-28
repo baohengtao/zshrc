@@ -4,7 +4,7 @@ source $ZPLUG_HOME/init.zsh
 
 
 # theme
-zplug romkatv/powerlevel10k, as:theme, depth:1
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "zdharma/fast-syntax-highlighting"
 zplug "plugins/colored-man-pages", from:"oh-my-zsh"
 
@@ -17,6 +17,7 @@ zplug "wfxr/forgit"
 ## 补全
 zplug "zsh-users/zsh-completions"
 # zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
+zplug "changyuheng/zsh-interactive-cd"
 zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ## 目录跳转
