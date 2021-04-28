@@ -1,3 +1,5 @@
+# for XDG
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # file
 alias rsync='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 
@@ -25,7 +27,7 @@ alias c=clear
 alias sudo='sudo -E' #keep user environment
 alias mv="mv -i -v"
 alias cp="cp -v"
-alias rm="rm -v"
+alias rm="trash -v"
 alias trash="trash -v"
 alias trash-empty="trash-empty 10"
 alias trash-put="trash-put -v"
