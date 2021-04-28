@@ -19,3 +19,7 @@ export http_proxy=http://127.0.0.1:6152
 export all_proxy=socks5://127.0.0.1:6153
 
 export EDITOR=nvim
+
+
+export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
+
