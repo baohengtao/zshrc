@@ -48,6 +48,9 @@ alias ah="a -B home_folder"
 
 alias v="f -e nvim"
 alias co="f -e code"
+alias n='nfasd -e nvim'
+alias ny='nfasd -e nyaovim'
+
 alias o="ac -e open"
 alias t="ac -e typora"
 alias th="ah -e typora"
