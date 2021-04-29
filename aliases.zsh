@@ -17,6 +17,19 @@ else
   alias diff='diff --color=auto'
 fi
 
+# alternative
+if command -v trash &> /dev/null; then
+  alias rm="trash -v"
+fi
+
+if command -v glances &> /dev/null; then
+  alias top='glances'
+fi
+
+if command -v vim &> /dev/null; then
+  alias vim=nvim
+fi
+
 # self-defined
 alias zshrc='source ~/.zshrc'
 alias cs='echo -ne "\e[5 q"'
@@ -27,11 +40,9 @@ alias c=clear
 alias sudo='sudo -E' #keep user environment
 alias mv="mv -i -v"
 alias cp="cp -v"
-alias rm="trash -v"
 alias trash="trash -v"
 alias trash-empty="trash-empty 10"
 alias trash-put="trash-put -v"
-alias top='htop'
 
 # tmux
 alias td="tmux detach"
@@ -86,18 +97,19 @@ alias ...='cd ../../'
 alias less="less -r"
 
 # ls
-alias l='exa --icons --git --time-style iso'
+
+if command -v exa &> /dev/null; then
+   alias l='exa --icons --git --time-style iso'
+   alias tree='exa -T -L 2'
+else
+  alias l=ls
+fi
+
 alias ll='l -lhg --octal-permissions --no-permissions '
 alias lla='ll -a'
 alias la='l -a'
 alias lldot='ll -d .*'
 alias ldot='l -d .*'
-alias tree='exa -T -L 2'
-alias lt='ll -s time'
-# alias ll='lsd --blocks permission,links,user,group,size,date,name'
-# alias ldot='ll -d .*'
-# alias la='ll -lA'   #long list,show almost all,show type,human readable
-# alias lt='ll -t'   #long list,sorted by date,show type,human readable
 
 
 
@@ -116,7 +128,6 @@ alias hsi='history | grep -i'
 
 #program
 alias vi=vim
-alias vim=nvim
 alias python='python3'
 alias pip='pip3'
 
@@ -130,9 +141,9 @@ alias gf="git fuzzy"
 alias lg="lazygit"
 
 # forgit
-alias gd="forgit::diff"
-alias ga="forgit::add"
-alias gl="forgit::log"
+alias fgd="forgit::diff"
+alias fga="forgit::add"
+alias fgl="forgit::log"
 # git
 alias g=git
 alias gs='git status'

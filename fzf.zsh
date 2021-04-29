@@ -9,11 +9,11 @@ export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview '( ( [ ! -f {} ] && tree -C 
 #export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse" 
 # 设置执行命令
 export FZF_DEFAULT_COMMAND="fd  --no-ignore-vcs "
-export FZF_ALT_C_COMMAND="fd -td --no-ignore-vcs  . ~"
+export FZF_ALT_C_COMMAND="fd -td -H --no-ignore-vcs  . ~"
 export FZF_CTRL_T_COMMAND="fd  --no-ignore-vcs "
 # 设置路径生产使用的函数
-_fzf_compgen_path() { fd --no-ignore-vcs   . "$1"}
-_fzf_compgen_dir() { fd -td --no-ignore-vcs   . "$1"}
+_fzf_compgen_path() { fd --no-ignore-vcs -H  . "$1"}
+_fzf_compgen_dir() { fd -td --no-ignore-vcs -H   . "$1"}
 
 _fzf_comprun() {
   local command=$1
