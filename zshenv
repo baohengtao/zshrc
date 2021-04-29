@@ -17,10 +17,12 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 
-export https_proxy=http://127.0.0.1:6152
-export http_proxy=http://127.0.0.1:6152
-export all_proxy=socks5://127.0.0.1:6153
 
+if [[ $(uname) == "Darwin" ]]; then
+  export https_proxy=http://127.0.0.1:6152
+  export http_proxy=http://127.0.0.1:6152
+  export all_proxy=socks5://127.0.0.1:6153
+fi
 
 
 export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
