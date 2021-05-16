@@ -17,9 +17,12 @@ zplug "wfxr/forgit"
 
 ## 补全
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+bindkey  '^P' history-substring-search-up
+bindkey  '^N' history-substring-search-down
 # zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
 zplug "changyuheng/zsh-interactive-cd"
-zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ## 目录跳转
 zplug "plugins/fasd", from:"oh-my-zsh"

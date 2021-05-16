@@ -1,7 +1,28 @@
+alias q="exit"
+alias nf="nfasd"
+alias h=man
+alias sysbrew="/usr/local/Homebrew/bin/brew"
+alias :q=q
+alias so="source $ZDOTDIR/.zshrc"
+alias zshrc="nvim $ZDOTDIR/.zshrc"
+alias ua="unalias"
+alias nv="nvim"
+alias nvc="nvim ."
+alias gv="gvim"
+# python
+alias da="deactivate"
+alias ca="conda activate"
+alias cda="conda deactivate"
+alias torch="conda activate torch"
+alias main="workon main"
+alias to=torch
+alias jl="torch && jupyter-lab"
+alias pi="pip install"
+alias ci="conda install"
 # for XDG
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # file
-alias rsync='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
+alias rsync-with-delete='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 
 # suffix aliases
 alias -s md=typora
@@ -26,14 +47,8 @@ if command -v glances &> /dev/null; then
   alias top='glances'
 fi
 
-if command -v vim &> /dev/null; then
-  alias vim=nvim
-fi
-
 # self-defined
-alias zshrc='source ~/.zshrc'
 alias cs='echo -ne "\e[5 q"'
-alias find='echo "oh, noope, you should use fd"'
 alias fde="fd --no-ignore-vcs"
 alias c=clear
 # better default
@@ -49,6 +64,7 @@ alias td="tmux detach"
 alias tl="tmux ls"
 alias tn="tmux new -d -t"
 alias ta="tmux attach "
+alias tnw="tmux new-window -n"
 alias tat="ta -t"
 
 # fasd
@@ -61,8 +77,6 @@ alias ah="a -B home_folder"
 
 alias v="f -e nvim"
 alias co="f -e code"
-alias n='nfasd -e nvim'
-alias ny='nfasd -e nyaovim'
 
 alias o="ac -e open"
 alias t="ac -e typora"
@@ -89,7 +103,7 @@ alias jh="j -B  home_folder"
 #shorthand
 alias neo=neofetch # s means system
 alias cos=cowsay
-alias ra=ranger
+alias r=ranger
 
 # cd
 setopt autocd
@@ -99,13 +113,14 @@ alias less="less -r"
 # ls
 
 if command -v exa &> /dev/null; then
-   alias l='exa --icons --git --time-style iso'
-   alias tree='exa -T -L 2'
+  alias l='exa --icons --git --time-style iso'
+  alias tree='exa -T -L 2'
+  alias ll='l -lhg --octal-permissions --no-permissions '
 else
   alias l=ls
+  alias ll=ls -l
 fi
 
-alias ll='l -lhg --octal-permissions --no-permissions '
 alias lla='ll -a'
 alias la='l -a'
 alias lldot='ll -d .*'
@@ -114,22 +129,15 @@ alias ldot='l -d .*'
 
 
 # brew
+alias bl='brew leaves'
 alias bs='brew search'
 alias bsd='brew search --desc'
 alias bis='brew install'
 alias bisc='brew install --cask'
 alias brewup='brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor'
 
-# history
-alias h='history'
-alias hs='history | grep'
-alias hsi='history | grep -i'
-
-
 #program
 alias vi=vim
-alias python='python3'
-alias pip='pip3'
 
 
 

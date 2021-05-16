@@ -17,10 +17,10 @@ SAVEHIST=10000
 setopt appendhistory
 setopt SHARE_HISTORY
 
-EDITOR=nvim
-BROWSER=open
-XIVIEWER=pixea
-Player=iina
+export EDITOR=nvim
+export BROWSER=open
+export XIVIEWER=pixea
+export Player=iina
 
 # themes
 THEME_CODE=Dracula
