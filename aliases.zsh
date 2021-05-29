@@ -1,3 +1,9 @@
+alias pandoc-tex="pandoc --mathjax --css ~/pandoc.css -s "
+alias ft="fortune -e   tang300 song100 | cowsay"
+alias deploy="j hugo; rm public/*; hugo; cd public; ga .; gcamr; gp"
+
+alias hs="hugo server"
+alias ty="typora"
 alias q="exit"
 alias nf="nfasd"
 alias h=man
@@ -6,9 +12,14 @@ alias :q=q
 alias so="source $ZDOTDIR/.zshrc"
 alias zshrc="nvim $ZDOTDIR/.zshrc"
 alias ua="unalias"
+alias ghweb="gh repo view --web"
+# editor
 alias nv="nvim"
 alias nvc="nvim ."
 alias gv="gvim"
+alias vi="nvim"
+alias ed="emacs --with-profile doom"
+alias ev='emacs --with-profile vanilla'
 # python
 alias da="deactivate"
 alias ca="conda activate"
@@ -20,7 +31,7 @@ alias jl="torch && jupyter-lab"
 alias pi="pip install"
 alias ci="conda install"
 # for XDG
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # file
 alias rsync-with-delete='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 
@@ -49,6 +60,7 @@ fi
 
 # self-defined
 alias cs='echo -ne "\e[5 q"'
+# alias cs= "printf '%b' '\e[5;red\a'"
 alias fde="fd --no-ignore-vcs"
 alias c=clear
 # better default
@@ -74,8 +86,9 @@ alias f="fasd -f"
 
 alias ac="a -B current_folder"
 alias ah="a -B home_folder"
-
+alias fc="f -B current_folder"
 alias v="f -e nvim"
+alias vc= "fc -e nvim"
 alias co="f -e code"
 
 alias o="ac -e open"
@@ -136,15 +149,11 @@ alias bis='brew install'
 alias bisc='brew install --cask'
 alias brewup='brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor'
 
-#program
-alias vi=vim
-
-
-
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
 
 # git-fuzzy
+alias gcm="git commit --amend"
 alias gf="git fuzzy"
 alias lg="lazygit"
 
@@ -156,9 +165,10 @@ alias fgl="forgit::log"
 alias g=git
 alias gs='git status'
 alias gss='git status -s'
-alias gca="git commit -a -v"
-alias gcam="git commit -a -v -m"
-alias gcamr="git commit -av -m 'regular update'"
+alias gc="git commit -v"
+alias gca="gc  -a"
+alias gcam="gca -m"
+alias gcamr="gcam 'regular update'"
 alias gb="git branch"
 alias gbD="git branch -D"
 alias gbd="git branch -d"

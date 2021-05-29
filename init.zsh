@@ -5,6 +5,7 @@ files=(
   function/package.zsh
   # function/typora.zsh
   plugin.zsh
+  # antigen.zsh
   fzf.zsh
   aliases.zsh
   )

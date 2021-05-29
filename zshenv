@@ -6,6 +6,7 @@ export MYPATH="$MYPATH:$HOME/.local/pipx/bin"
 export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 export MYPATH="$MYPATH:$HOME/.local/n/bin"
 export MYPATH="$MYPATH:$HOME/.local/homebrew/bin"
+export MYPATH="$MYPATH:$HOME/.config/emacs-doom/bin"
 export MYPATH="$MYPATH:/opt/local/bin"
 export MYPATH="$MYPATH:/Applications/MacVim.app/Contents/bin"
 export MYPATH="$MYPATH:/Applications/goneovim.app/Contents/MacOS"
@@ -42,6 +43,7 @@ export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export DOOMDIR="$XDG_CONFIG_HOME"/emacs-doom-config
 
 
 if [[ $(uname) == "Darwin" ]]; then
