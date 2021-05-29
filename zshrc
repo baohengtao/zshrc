@@ -10,11 +10,6 @@ if [ $(command -v virtualenvwrapper.sh) ]; then
   source virtualenvwrapper.sh
 fi
 
-# fzf
-FZF_PATH="$HOME/.local/bin/lib/fzf/shell"
-[[ $- == *i* ]] && source "$FZF_PATH/completion.zsh" 2> /dev/null
-source "$FZF_PATH/key-bindings.zsh"
-
 # >>> conda initialize >>>
 __conda_setup="$('/Users/htao/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
