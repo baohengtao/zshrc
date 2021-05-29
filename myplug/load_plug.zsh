@@ -8,7 +8,10 @@ files=(
   # tool
   forgit/forgit.plugin.zsh
   alias-tips/alias-tips.plugin.zsh
-  
+
+  # fzf
+  myfzf/completion.zsh
+  myfzf/key-bindings.zsh
 
   )
 
@@ -36,8 +39,6 @@ zplug "zsh-users/zsh-completions"
 zplug "changyuheng/zsh-interactive-cd"
 # zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-## 目录跳转
-zplug "plugins/fasd", from:"oh-my-zsh"
 ## mix
 zplug "plugins/command-not-found", from:"oh-my-zsh"
 }

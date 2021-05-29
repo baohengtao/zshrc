@@ -7,7 +7,6 @@ if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source  "$ZDOTDIR/.p10k.zsh" 
 
-
 #######################################################################
 #                             ENVIRONMENT                             #
 #######################################################################
@@ -30,12 +29,6 @@ export Player=iina
 # themes
 THEME_CODE=Dracula
 
-
-
-
-
-
-
 #######################################################################
 #                             Load Files                              #
 #######################################################################
@@ -45,7 +38,6 @@ THEME_CODE=Dracula
 current_dir="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的pattern
  
 files=(
-  function/package.zsh
   myplug/load_plug.zsh
   aliases.zsh
   )
@@ -93,8 +85,4 @@ _fzf_comprun() {
   esac
 }
 
-# fzf
-FZF_PATH="$HOME/.local/bin/lib/fzf/shell"
-[[ $- == *i* ]] && source "$FZF_PATH/completion.zsh" 2> /dev/null
-source "$FZF_PATH/key-bindings.zsh"
-
+eval "$(fasd --init auto)"
