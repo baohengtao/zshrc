@@ -2,6 +2,7 @@ export EDITOR=nvim
 export BROWSER=open
 export XIVIEWER=pixea
 export Player=iina
+export FORGIT_NO_ALIASES=1
 
 alias pandoc-tex="pandoc --mathjax --css ~/pandoc.css -s "
 alias ft="fortune -e   tang300 song100 | cowsay"

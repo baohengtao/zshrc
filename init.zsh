@@ -12,8 +12,3 @@ source "$current/aliases.zsh"
 source "$current/myplug/load_plug.zsh"
 
 
-#######################################################################
-#                             FZF SETTING                             #
-#######################################################################
-
-eval "$(fasd --init auto)"

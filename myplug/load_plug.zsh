@@ -12,11 +12,10 @@ files=(
   # fzf
   myfzf/completion.zsh
   myfzf/key-bindings.zsh
-
+  myfzf/fzf-setting.zsh
   )
 
 
-THEME_CODE=Dracula
 for file in $files; do
   filepath=$plug_dir/$file
   if [[ -e $filepath ]]; then
@@ -30,6 +29,8 @@ bindkey  '^P' history-substring-search-up
 bindkey  '^N' history-substring-search-down
 # alias-tips.plugin
 export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
+eval "$(fasd --init auto)"
+THEME_CODE=Dracula
 
 function empty {
 
