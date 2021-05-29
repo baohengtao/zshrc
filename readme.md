@@ -56,6 +56,7 @@ function proxy_unset(){
 ```shell
 sudo snap install --classic nvim
 ```
+若无sudo权限, 可选择`nvim.appimage`
 
 安装ctags
 
@@ -106,7 +107,10 @@ export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/export N_
 安装 
 
 ```shell
-sudo npm install -g nn stablesudo npm install --global yarnyarn global add neovim # 添加对neovim的支持
+sudo npm install -g n
+n stable
+sudo npm install --global yarn
+yarn global add neovim # 添加对neovim的支持
 ```
 
 
