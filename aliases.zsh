@@ -1,3 +1,8 @@
+export EDITOR=nvim
+export BROWSER=open
+export XIVIEWER=pixea
+export Player=iina
+
 alias pandoc-tex="pandoc --mathjax --css ~/pandoc.css -s "
 alias ft="fortune -e   tang300 song100 | cowsay"
 alias deploy="j hugo; rm public/*; hugo; cd public; ga .; gcamr; gp"

@@ -15,7 +15,6 @@ export MYPATH="$MYPATH:/usr/local/opt/openssl@1.1/bin"
 export MYPATH="$MYPATH:/usr/local/opt/sqlite/bin" 
 export MYPATH="$MYPATH:$PATH"
 
-
 ## XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -53,9 +52,9 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 
-
-
-# for sysbrew
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export CPPFLAGS="-I/usr/local/opt/libffi/include"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+## history
+HISTFILE=$XDG_DATA_HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt SHARE_HISTORY

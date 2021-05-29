@@ -16,6 +16,7 @@ files=(
   )
 
 
+THEME_CODE=Dracula
 for file in $files; do
   filepath=$plug_dir/$file
   if [[ -e $filepath ]]; then
