@@ -20,7 +20,7 @@ if [ $(command -v virtualenvwrapper.sh) ]; then
 fi
 
 # fzf
-FZF_PATH="/Users/htao/.local/bin/lib/fzf/shell"
+FZF_PATH="$HOME/.local/bin/lib/fzf/shell"
 [[ $- == *i* ]] && source "$FZF_PATH/completion.zsh" 2> /dev/null
 source "$FZF_PATH/key-bindings.zsh"
 
@@ -37,4 +37,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

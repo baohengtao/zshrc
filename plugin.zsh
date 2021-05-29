@@ -1,4 +1,5 @@
 ZPLUG_GIT=https://github.com/zplug/zplug
+ZPLUG_HOME="$ZDOTDIR/main/zplug"
 #ZPLUG_GIT=https://gitee.com/herun/zplug.git
 [[ -d $ZPLUG_HOME ]] ||  git clone  $ZPLUG_GIT $ZPLUG_HOME
 source $ZPLUG_HOME/init.zsh

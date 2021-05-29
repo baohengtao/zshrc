@@ -7,8 +7,6 @@ compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 # export XDG_CACHE_HOME="$HOME/.cache"
 # export XDG_DATA_HOME="$HOME/.local/share"
 
-## plugin path
-export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
 
 ## history
 HISTFILE=$XDG_DATA_HOME/.zsh_history
