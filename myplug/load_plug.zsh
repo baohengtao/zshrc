@@ -8,7 +8,7 @@ files=(
   # tool
   forgit/forgit.plugin.zsh
   alias-tips/alias-tips.plugin.zsh
-
+  zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   # fzf
   myfzf/completion.zsh
   myfzf/key-bindings.zsh
