@@ -25,4 +25,3 @@ zshrc_update(){
   git -C ${current_dir} pull
 }
 
-

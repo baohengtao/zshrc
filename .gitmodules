@@ -16,3 +16,6 @@
 [submodule "alias-tips"]
 	path = myplug/alias-tips
 	url = https://github.com/djui/alias-tips
+[submodule "zsh-interactive-cd"]
+	path = zsh-interactive-cd
+	url = https://github.com/changyuheng/zsh-interactive-cd
