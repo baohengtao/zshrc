@@ -1,3 +1,18 @@
 [submodule "myplug/powerlevel10k"]
 	path = myplug/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "fast-syntax-highlighting"]
+	path = myplug/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule "zsh-history-substring-search"]
+	path = myplug/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "git-fuzzy"]
+	path = myplug/git-fuzzy
+	url = https://github.com/bigH/git-fuzzy
+[submodule "forgit"]
+	path = myplug/forgit
+	url = https://github.com/wfxr/forgit
+[submodule "alias-tips"]
+	path = myplug/alias-tips
+	url = https://github.com/djui/alias-tips
