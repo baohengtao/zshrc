@@ -11,4 +11,9 @@ current="${0%/*}"
 source "$current/aliases.zsh"
 source "$current/myplug/load_plug.zsh"
 
-
+## history
+export HISTFILE=$XDG_DATA_HOME/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt appendhistory
+setopt SHARE_HISTORY

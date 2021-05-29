@@ -50,11 +50,3 @@ if [[ $(uname) == "Darwin" ]]; then
   export http_proxy=http://127.0.0.1:6152
   export all_proxy=socks5://127.0.0.1:6153
 fi
-
-
-## history
-HISTFILE=$XDG_DATA_HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-setopt SHARE_HISTORY
