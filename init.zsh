@@ -1,4 +1,14 @@
 #######################################################################
+#                                P10K                                 #
+#######################################################################
+
+if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source  "$ZDOTDIR/.p10k.zsh" 
+
+
+#######################################################################
 #                             ENVIRONMENT                             #
 #######################################################################
 
@@ -82,4 +92,9 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
+
+# fzf
+FZF_PATH="$HOME/.local/bin/lib/fzf/shell"
+[[ $- == *i* ]] && source "$FZF_PATH/completion.zsh" 2> /dev/null
+source "$FZF_PATH/key-bindings.zsh"
 

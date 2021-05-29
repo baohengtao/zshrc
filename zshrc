@@ -1,13 +1,4 @@
 PATH=$MYPATH
-if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source  "$ZDOTDIR/.p10k.zsh" 
-
-# clone my personal config
-if ! [[ -d  "$ZDOTDIR/main" ]]; then
-   git clone git@github.com:baohengtao/zshrc.git "$ZDOTDIR/main"    
-fi
 source  "$ZDOTDIR/main/init.zsh"
 
 # environment export
