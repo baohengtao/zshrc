@@ -92,6 +92,9 @@ export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
 bash n stable
 npm install --global yarn
+yarn config set global-folder ~/.local/yarn
+yarn config set dir ~/.local/yarn
+yarn config set prefix ~/.local/yarn
 yarn global add neovim # 添加对neovim的支持
 ```
 
@@ -173,6 +176,16 @@ export LESSKEY="$XDG_CONFIG_HOME"/less/lesskeyexport LESSHISTFILE="$XDG_CACHE_HO
 
 ## 设置代理
 
+rpi上安装clash:
+
+```shell
+wget https://github.com/Dreamacro/clash/releases/download/v1.6.0/clash-linux-armv7-v1.6.0.gz
+mv clash-linux-armv7-v1.6.0 ~/.local/bin/clash
+
+```
+
+
+
 ```shell
 HTTP_PORT=7890
 SOCKS_PORT=7891
@@ -190,4 +203,3 @@ function proxy_unset(){
 
 
 
-##
