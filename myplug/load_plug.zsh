@@ -8,8 +8,10 @@ files=(
   # tool
   forgit/forgit.plugin.zsh
   alias-tips/alias-tips.plugin.zsh
-  zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+  zsh-autosuggestions/zsh-autosuggestions.zsh
   # fzf
+  zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+  fzf-tab/fzf-tab.plugin.zsh
   myfzf/completion.zsh
   myfzf/key-bindings.zsh
   myfzf/fzf-setting.zsh
@@ -37,8 +39,6 @@ function empty {
 zplug "plugins/colored-man-pages", from:"oh-my-zsh"
 ## 补全
 zplug "zsh-users/zsh-completions"
-# zplug "Aloxaf/fzf-tab", use:"fzf-tab.plugin.zsh"
-zplug "changyuheng/zsh-interactive-cd"
 # zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ## mix

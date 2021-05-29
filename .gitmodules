@@ -19,3 +19,9 @@
 [submodule "zsh-interactive-cd"]
 	path = myplug/zsh-interactive-cd
 	url = https://github.com/changyuheng/zsh-interactive-cd
+[submodule "fzf-tab"]
+	path = myplug/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
+[submodule "zsh-autosuggestions"]
+	path = myplug/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
