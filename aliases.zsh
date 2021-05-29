@@ -162,6 +162,7 @@ alias fgd="forgit::diff"
 alias fga="forgit::add"
 alias fgl="forgit::log"
 # git
+alias gsub='git submodule'
 alias g=git
 alias gs='git status'
 alias gss='git status -s'
