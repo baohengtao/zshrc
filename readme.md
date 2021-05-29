@@ -1,6 +1,6 @@
+## 初始化环境
 
-
-## 安装
+### 安装
 
 ```zsh
 ZDOTDIR="$HOME/.config/zsh"
@@ -9,9 +9,26 @@ cp $ZDOTDIR/main/zshenv .zshenv
 cp $ZDOTDIR/main/zshrc $ZDOTDIR/.zshrc
 ```
 
+### XDG目录
+
+在`~/.zshenv` 中设置XDG环境变量
+
+```shell
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+```
+
+### 添加路径
+
+```sh
+export MYPATH="$MYPATH:$HOME/.local/bin"
+export MYPATH="$MYPATH:$PATH"
+```
 
 
-## 设置代理
+
+### 设置代理
 
 ```shell
 HTTP_PORT=7890
@@ -30,33 +47,7 @@ function proxy_unset(){
 
 
 
-
-
-## 添加路径
-
-```sh
-export MYPATH="$MYPATH:$HOME/.local/bin"
-export MYPATH="$MYPATH:$HOME/.config/emacs-doom/bin"
-export MYPATH="$MYPATH:$PATH"
-```
-
-
-
-## XDG目录
-
-在`~/.zshenv` 中设置XDG环境变量
-
-```shell
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-```
-
-
-
-
-
-## VIM
+## 程序安装
 
 ### neovim
 
@@ -77,14 +68,6 @@ make && make install
 ```
 
 
-
-
-
-
-
-
-
-## 程序安装
 
 ### Python
 
@@ -133,6 +116,9 @@ sudo npm install -g nn stablesudo npm install --global yarnyarn global add neovi
 ## 配置文件路径
 
 ```shell
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"export CONDARC="$XDG_CONFIG_HOME/conda/condarc"export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"export LESSKEY="$XDG_CONFIG_HOME"/less/lesskeyexport LESSHISTFILE="$XDG_CACHE_HOME"/less/historyexport DOOMDIR="$XDG_CONFIG_HOME"/emacs-doom-config
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export CONDARC="$XDG_CONFIG_HOME/conda/condarc"export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskeyexport LESSHISTFILE="$XDG_CACHE_HOME"/less/historyexport DOOMDIR="$XDG_CONFIG_HOME"/emacs-doom-config
 ```
 
