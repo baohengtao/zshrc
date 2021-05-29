@@ -23,6 +23,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 ```sh
 export MYPATH="$MYPATH:$HOME/.local/bin"
+
 export MYPATH="$MYPATH:$PATH"
 ```
 
@@ -68,7 +69,7 @@ cd ctags
 make && make install
 ```
 
-
+c
 
 ### Python
 
@@ -101,16 +102,32 @@ export PYENV_ROOT="$HOME/.local/pyenv"
 设置环境变量如下
 
 ```shell
-export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/export N_PREFIX="$HOME/.local/n"export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"export MYPATH="$MYPATH:$HOME/.local/yarn/bin"export MYPATH="$MYPATH:$HOME/.local/n/bin"
+export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/export N_PREFIX="$HOME/.local/n"
+export MYPATH="$MYPATH:$HOME/.local/n/bin"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 ```
 
 安装 
 
 ```shell
-sudo npm install -g n
-n stable
-sudo npm install --global yarn
+curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
+bash n stable
+npm install --global yarn
 yarn global add neovim # 添加对neovim的支持
+```
+
+### fasd
+
+```shell
+git clone https://github.com/clvv/fasd
+PREFIX=$HOME/.local make install
+```
+
+添加如下内容至zshrc
+
+```shell
+eval "$(fasd --init auto)"
 ```
 
 
