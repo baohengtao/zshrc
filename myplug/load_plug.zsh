@@ -24,7 +24,8 @@ done
 # for plugin zsh-history-substring-search
 bindkey  '^P' history-substring-search-up
 bindkey  '^N' history-substring-search-down
-
+# alias-tips.plugin
+export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
 
 function empty {
 

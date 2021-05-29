@@ -1,7 +1,40 @@
+#######################################################################
+#                             ENVIRONMENT                             #
+#######################################################################
+
+autoload -Uz compinit # init completion system
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION 
+
+## history
+HISTFILE=$XDG_DATA_HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt SHARE_HISTORY
+
+export EDITOR=nvim
+export BROWSER=open
+export XIVIEWER=pixea
+export Player=iina
+
+# themes
+THEME_CODE=Dracula
+
+
+
+
+
+
+
+#######################################################################
+#                             Load Files                              #
+#######################################################################
+
+
+
 current_dir="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的pattern
  
 files=(
-  parameter.zsh
   function/package.zsh
   myplug/load_plug.zsh
   aliases.zsh
@@ -17,10 +50,10 @@ for file in $files; do
   fi
 done
 
-zshrc_update(){
-  git -C ${current_dir} push
-  git -C ${current_dir} pull
-}
+#######################################################################
+#                             FZF SETTING                             #
+#######################################################################
+
 
 # 使用 `;` 触发搜索
 export FZF_COMPLETION_TRIGGER=';'
