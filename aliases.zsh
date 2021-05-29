@@ -161,6 +161,7 @@ alias duf='du -sh *'
 # git-fuzzy
 alias gcm="git commit --amend"
 alias gf="git fuzzy"
+
 alias lg="lazygit"
 
 # forgit
@@ -168,6 +169,7 @@ alias fgd="forgit::diff"
 alias fga="forgit::add"
 alias fgl="forgit::log"
 # git
+alias ga='git add'
 alias gsub='git submodule'
 alias g=git
 alias gs='git status'

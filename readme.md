@@ -1,15 +1,14 @@
 ## 初始化环境
 
-### 安装
-
 ```zsh
 ZDOTDIR="$HOME/.config/zsh"
 git clone git@github.com:baohengtao/zshrc.git $ZDOTDIR/main
-cp $ZDOTDIR/main/zshenv .zshenv
-cp $ZDOTDIR/main/zshrc $ZDOTDIR/.zshrc
+echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 ```
 
-### XDG目录
+
+
+### 设置XDG目录
 
 在`~/.zshenv` 中设置XDG环境变量
 
@@ -17,36 +16,15 @@ cp $ZDOTDIR/main/zshrc $ZDOTDIR/.zshrc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 ```
 
 ### 添加路径
 
 ```sh
 export MYPATH="$MYPATH:$HOME/.local/bin"
-
 export MYPATH="$MYPATH:$PATH"
 ```
-
-
-
-### 设置代理
-
-```shell
-HTTP_PORT=7890
-SOCKS_PORT=7891
-SERVER="127.0.0.1"
-function proxy_set(){
-	export "http_proxy=http://127.0.0.1:$HTTP_PORT"
-	export "https_proxy=http://127.0.0.1:$HTTP_PORT"
-	export "all_proxy=socks5://127.0.0.1:$HTTP_PORT"
-}
-
-function proxy_unset(){
-   unset {http,https,all}_proxy
-}
-```
-
-
 
 ## 程序安装
 
@@ -69,7 +47,7 @@ cd ctags
 make && make install
 ```
 
-c
+
 
 ### Python
 
@@ -130,6 +108,46 @@ PREFIX=$HOME/.local make install
 eval "$(fasd --init auto)"
 ```
 
+配置`~/.fasdrc` 如下
+
+```shell
+_FASD_DATA="$HOME/.data/fasd"
+_FASD_NOCASE=0
+_FASD_SINK="$HOME/.data/fasd.log"
+#_FASD_BACKENDS="spotlight"
+
+home_folder(){
+ fd -td . "$HOME" -x echo "{}|1"
+}
+
+desk_folder(){
+  fd -td . "$HOME/Desktop" -x echo "{}|1"
+}
+
+current_folder(){
+ fd  -td . -x echo "$PWD/{}|1" 
+}
+
+current_file(){
+  fd  -x echo "$PWD/{}|1"
+}
+
+```
+
+
+
+
+
+### fzf
+
+```shell
+git clone --depth 1 https://github.com/junegunn/fzf.git  $HOME/.local/lib/fzf
+cd $HOME/.local/lib/fzf 
+install
+cd $HOME/.local/bin
+ln -s ../lib/fzf/bin/fzf fzf
+```
+
 
 
 
@@ -143,3 +161,33 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskeyexport LESSHISTFILE="$XDG_CACHE_HOME"/less/historyexport DOOMDIR="$XDG_CONFIG_HOME"/emacs-doom-config
 ```
 
+
+
+
+
+
+
+
+
+
+
+## 设置代理
+
+```shell
+HTTP_PORT=7890
+SOCKS_PORT=7891
+SERVER="127.0.0.1"
+function proxy_set(){
+	export "http_proxy=http://127.0.0.1:$HTTP_PORT"
+	export "https_proxy=http://127.0.0.1:$HTTP_PORT"
+	export "all_proxy=socks5://127.0.0.1:$HTTP_PORT"
+}
+
+function proxy_unset(){
+   unset {http,https,all}_proxy
+}
+```
+
+
+
+##
