@@ -1,4 +1,4 @@
-
+alias dco=docker-compose
 export EDITOR=nvim
 export BROWSER=open
 export XIVIEWER=pixea
