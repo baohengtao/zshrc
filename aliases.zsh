@@ -1,3 +1,7 @@
+# for Rpi
+if command -v fdfind &> /dev/null; then
+  alias fd=fdfind
+fi
 alias dco=docker-compose
 export EDITOR=nvim
 export BROWSER=open
@@ -77,9 +81,6 @@ alias c=clear
 alias sudo='sudo -E' #keep user environment
 alias mv="mv -i -v"
 alias cp="cp -v"
-alias trash="trash -v"
-alias trash-empty="trash-empty 10"
-alias trash-put="trash-put -v"
 
 # tmux
 alias td="tmux detach"
