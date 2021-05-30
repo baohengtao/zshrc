@@ -1,4 +1,4 @@
-# for Rpi
+for raspberry
 if command -v fdfind &> /dev/null; then
   alias fd=fdfind
 fi
