@@ -193,7 +193,7 @@ SERVER="127.0.0.1"
 function proxy_set(){
 	export "http_proxy=http://127.0.0.1:$HTTP_PORT"
 	export "https_proxy=http://127.0.0.1:$HTTP_PORT"
-	export "all_proxy=socks5://127.0.0.1:$HTTP_PORT"
+	export "all_proxy=socks5://127.0.0.1:$SOCKS_PORT"
 }
 
 function proxy_unset(){
