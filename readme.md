@@ -98,7 +98,7 @@ yarn config set prefix ~/.local/yarn
 yarn global add neovim # 添加对neovim的支持
 ```
 
-### fasd
+### fasdf
 
 ```shell
 git clone https://github.com/clvv/fasd
@@ -114,9 +114,9 @@ eval "$(fasd --init auto)"
 配置`~/.fasdrc` 如下
 
 ```shell
-_FASD_DATA="$HOME/.data/fasd"
+_FASD_DATA="$XDG_DATA_HOME/fasd"
 _FASD_NOCASE=0
-_FASD_SINK="$HOME/.data/fasd.log"
+_FASD_SINK="$XDG_DATA_HOME/fasd.log"
 #_FASD_BACKENDS="spotlight"
 
 home_folder(){
