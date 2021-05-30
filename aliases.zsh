@@ -2,6 +2,22 @@
 if command -v fdfind &> /dev/null; then
   alias fd=fdfind
 fi
+
+function set-proxy(){
+  if [[ -z $HTTP_PORT || -z $SOCKS_PORT ]]; then
+    echo "port not defined"
+  else
+    echo "set with http port $HTTP_PORT and socks port $SOCKS_PORT"
+	  export "http_proxy=http://127.0.0.1:$HTTP_PORT"
+	  export "https_proxy=http://127.0.0.1:$HTTP_PORT"
+	  export "all_proxy=socks5://127.0.0.1:$SOCKS_PORT"
+  fi
+}
+
+function unset-proxy(){
+   unset {http,https,all}_proxy
+}
+
 alias dco=docker-compose
 export EDITOR=nvim
 export BROWSER=open
