@@ -8,9 +8,9 @@ echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 
 
 
-### 设置XDG目录
+### 设置 XDG 目录
 
-在`~/.zshenv` 中设置XDG环境变量
+在`~/.zshenv` 中设置 XDG 环境变量
 
 ```shell
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,14 +30,14 @@ export MYPATH="$MYPATH:$PATH"
 
 ### neovim
 
-树莓派上安装:
+树莓派上安装：
 
 ```shell
 sudo snap install --classic nvim
 ```
-若无sudo权限, 可选择`nvim.appimage`
+若无 sudo 权限，可选择`nvim.appimage`
 
-安装ctags
+安装 ctags
 
 ```shell
 git clone https://github.com/universal-ctags/ctags.git
@@ -55,7 +55,7 @@ make && make install
 
 ```shell
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export WORKON_HOME="$HOME/.local/workon" 
+export WORKON_HOME="$HOME/.local/workon"
 ```
 
 #### pipx
@@ -86,7 +86,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 ```
 
-安装 
+安装
 
 ```shell
 curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
@@ -95,7 +95,7 @@ npm install --global yarn
 yarn config set global-folder ~/.local/yarn
 yarn config set dir ~/.local/yarn
 yarn config set prefix ~/.local/yarn
-yarn global add neovim # 添加对neovim的支持
+yarn global add neovim # 添加对 neovim 的支持
 ```
 
 ### fasdf
@@ -105,7 +105,7 @@ git clone https://github.com/clvv/fasd
 PREFIX=$HOME/.local make install
 ```
 
-添加如下内容至zshrc
+添加如下内容至 zshrc
 
 ```shell
 eval "$(fasd --init auto)"
@@ -128,7 +128,7 @@ desk_folder(){
 }
 
 current_folder(){
- fd  -td . -x echo "$PWD/{}|1" 
+ fd  -td . -x echo "$PWD/{}|1"
 }
 
 current_file(){
@@ -145,7 +145,7 @@ current_file(){
 
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git  $HOME/.local/lib/fzf
-cd $HOME/.local/lib/fzf 
+cd $HOME/.local/lib/fzf
 install
 cd $HOME/.local/bin
 ln -s ../lib/fzf/bin/fzf fzf
@@ -176,7 +176,7 @@ export LESSKEY="$XDG_CONFIG_HOME"/less/lesskeyexport LESSHISTFILE="$XDG_CACHE_HO
 
 ## 设置代理
 
-rpi上安装clash:
+rpi 上安装 clash:
 
 ```shell
 wget https://github.com/Dreamacro/clash/releases/download/v1.6.0/clash-linux-armv7-v1.6.0.gz
@@ -198,8 +198,13 @@ function proxy_set(){
 
 function proxy_unset(){
    unset {http,https,all}_proxy
-}
 ```
+对于 clash 可直接复制以下几行快速配置
+```shell
 
+	export "http_proxy=http://127.0.0.1:7890"
+	export "https_proxy=http://127.0.0.1:7890"
+	export "all_proxy=socks5://127.0.0.1:7891"
+```
 
 
