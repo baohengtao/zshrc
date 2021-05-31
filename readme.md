@@ -201,10 +201,7 @@ function proxy_unset(){
 ```
 对于 clash 可直接复制以下几行快速配置
 ```shell
-
-	export "http_proxy=http://127.0.0.1:7890"
-	export "https_proxy=http://127.0.0.1:7890"
-	export "all_proxy=socks5://127.0.0.1:7891"
+export "http_proxy=http://127.0.0.1:7890"; export "https_proxy=http://127.0.0.1:7890"; export "all_proxy=socks5://127.0.0.1:7891"
 ```
 
 
