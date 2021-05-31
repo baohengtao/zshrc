@@ -15,7 +15,7 @@ files=(
   myfzf/completion.zsh
   myfzf/key-bindings.zsh
   myfzf/fzf-setting.zsh
-  omz/colored-man-pages.plugin.zsh
+  omz/arch-color-man.zsh
   )
 
 
