@@ -198,6 +198,7 @@ function proxy_set(){
 
 function proxy_unset(){
    unset {http,https,all}_proxy
+}
 ```
 对于 clash 可直接复制以下几行快速配置
 ```shell
