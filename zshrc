@@ -1,8 +1,8 @@
 PATH=$MYPATH
+autoload -U colors && colors
 source  "$ZDOTDIR/main/init.zsh"
 
 # environment export
-autoload -U colors && colors
 
 if [ $(command -v virtualenvwrapper.sh) ]; then
   export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
