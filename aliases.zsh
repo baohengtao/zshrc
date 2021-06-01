@@ -1,4 +1,4 @@
-for raspberry
+# for raspberry
 if command -v fdfind &> /dev/null; then
   alias fd=fdfind
 fi
@@ -27,6 +27,7 @@ export FORGIT_NO_ALIASES=1
 
 alias rpi="ssh rpi"
 alias thu="ssh thu"
+alias arch="ssh arch"
 
 alias pandoc-tex="pandoc --mathjax --css ~/pandoc.css -s "
 alias ft="fortune -e   tang300 song100 | cowsay"
@@ -154,18 +155,20 @@ alias less="less -r"
 
 if command -v exa &> /dev/null; then
   alias l='exa --icons --git --time-style iso'
-  alias tree='exa -T -L 2'
+  alias lt='l -T'
+  alias lt2='lt -L2'
+  alias lt3='lt -L3'
+  alias lt4='lt -L4'
   alias ll='l -lhg --octal-permissions --no-permissions '
 else
   alias l=ls
-  alias ll=ls -l
+  alias ll='ls -l'
 fi
 
 alias lla='ll -a'
 alias la='l -a'
 alias lldot='ll -d .*'
 alias ldot='l -d .*'
-
 
 
 # brew
