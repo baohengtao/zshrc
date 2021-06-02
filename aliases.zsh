@@ -1,3 +1,22 @@
+alias reveal='open -R'
+alias rmdir-empty='fd -H .DS_Store -x rm -v {}; fd -te -x grmdir -v'
+# gun
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias find=gfind
+  alias cp='gcp -v'
+  alias mv='gmv -i -v'
+  alias rm='grm'
+else
+  alias mv="mv -i -v"
+  alias cp="cp -v"
+fi
+# rsync
+alias rsync-default="rsync -aHzhvP"
+alias rsync-copy="rsync-default"
+alias rsync-move="rsync-default --remove-source-files"
+alias rsync-update="rsync-default --update"
+alias rsync-synchronize="rsync-default --update --delete-after"
+alias rsync-existing="rsync-default --update --delete-after --existing"
 # for raspberry
 if command -v fdfind &> /dev/null; then
   alias fd=fdfind
@@ -96,8 +115,6 @@ alias fde="fd --no-ignore-vcs"
 alias c=clear
 # better default
 alias sudo='sudo -E' #keep user environment
-alias mv="mv -i -v"
-alias cp="cp -v"
 
 # tmux
 alias td="tmux detach"
@@ -160,6 +177,8 @@ if command -v exa &> /dev/null; then
   alias lt3='lt -L3'
   alias lt4='lt -L4'
   alias ll='l -lhg --octal-permissions --no-permissions '
+  alias llh='ll -H'
+  alias lh='llh'
 else
   alias l=ls
   alias ll='ls -l'
@@ -209,6 +228,7 @@ alias gba='git branch -a'
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gp="git push"
+alias gd="git pull"
 alias gr="git remote"
 alias glg='git log --stat'
 alias glgg='git log --graph'

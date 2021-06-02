@@ -13,6 +13,7 @@ export MYPATH="$MYPATH:/Applications/goneovim.app/Contents/MacOS"
 export MYPATH="$MYPATH:/usr/local/bin"
 export MYPATH="$MYPATH:/usr/local/opt/openssl@1.1/bin" 
 export MYPATH="$MYPATH:/usr/local/opt/sqlite/bin" 
+export MYPATH="$MYPATH:/usr/local/Cellar/findutils/4.8.0_1"
 export MYPATH="$MYPATH:$PATH"
 
 ## XDG
