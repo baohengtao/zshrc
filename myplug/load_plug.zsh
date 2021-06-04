@@ -18,7 +18,7 @@ files=(
   omz/arch-color-man.zsh
   )
 
-
+  fpath=("$plug_dir/zsh-completions/src" "$plug_dir/single/exiftool-zsh-completion" $fpath)
 for file in $files; do
   filepath=$plug_dir/$file
   if [[ -e $filepath ]]; then

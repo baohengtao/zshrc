@@ -25,3 +25,6 @@
 [submodule "zsh-autosuggestions"]
 	path = myplug/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "myplug/myplug/zsh-completions"]
+	path = myplug/zsh-completions
+	url = git://github.com/zsh-users/zsh-completions.git

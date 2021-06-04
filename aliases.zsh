@@ -1,3 +1,7 @@
+alias exiftool-default='exiftool -progress -P -overwrite_original_in_place -P'
+alias exiftool-rename='exiftool-default "-filename<\$Title-\${DateTimeOriginal}" -d   "%y-%m-%d%%-2c.%%e"  -if \$Title -if \$DateTimeOriginal'
+alias exiftool-time-weibo='exiftool-default "-DateTimeOriginal<\${Filename;s/_.*//}" -d "%Y%m%d" -if "not \$DateTimeOriginal" '
+alias exiftool-time-ins='exiftool-default "-DateTimeOriginal<\${Filename;s/\ .*//}" -d "%Y-%m-%d"'
 alias reveal='open -R'
 alias rmdir-empty='fd -H .DS_Store -x rm -v {}; fd -te -x grmdir -v'
 # gun
@@ -11,11 +15,12 @@ else
   alias cp="cp -v"
 fi
 # rsync
-alias rsync-default="rsync -aHzhvP"
+alias rsync-default="rsync -aHzhvP --log-file=$HOME/rsync-`date +%Y-%m-%d`.log "
 alias rsync-copy="rsync-default"
 alias rsync-move="rsync-default --remove-source-files"
 alias rsync-update="rsync-default --update"
 alias rsync-synchronize="rsync-default --update --delete-after"
+alias rs=rsync-synchronize
 alias rsync-existing="rsync-default --update --delete-after --existing"
 # for raspberry
 if command -v fdfind &> /dev/null; then
@@ -171,13 +176,13 @@ alias less="less -r"
 # ls
 
 if command -v exa &> /dev/null; then
-  alias l='exa --icons --git --time-style iso'
+  alias l='exa --icons --git --time-style iso --created'
   alias lt='l -T'
   alias lt2='lt -L2'
   alias lt3='lt -L3'
   alias lt4='lt -L4'
   alias ll='l -lhg --octal-permissions --no-permissions '
-  alias llh='ll -H'
+  alias llh='ll -H -i'
   alias lh='llh'
 else
   alias l=ls
