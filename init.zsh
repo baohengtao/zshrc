@@ -17,3 +17,4 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 setopt appendhistory
 setopt SHARE_HISTORY
+export BAT_THEME="Dracula"
