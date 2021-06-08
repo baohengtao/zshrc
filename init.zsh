@@ -10,6 +10,7 @@ compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 current="${0%/*}"  
 source "$current/aliases.zsh"
 source "$current/myplug/load_plug.zsh"
+source "$current/exiftool.zsh"
 
 ## history
 export HISTFILE=$XDG_DATA_HOME/.zsh_history

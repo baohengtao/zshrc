@@ -3,53 +3,7 @@ function histfile-clean(){
 }
 
 
-#######################################################################
-#                           WeiboCrawler                              #
-#######################################################################
-
-alias weibo-download='workon crawler && python -m weibo_spider --output_dir="$HOME/Cooper/TimeLine/new" --config_path="$XDG_CONFIG_HOME/crawler-weibo/config.json" '
-
-export CRAWLER_INFO_HOME=$XDG_CONFIG_HOME/crawler-info
-
-function wb-database-gen(){
-	SupplierName="Weibo"
-  mkdir -p  $CRAWLER_INFO_HOME/$SupplierName
-  fd -td --exact-depth 1 -x exiftool -ImageCreatorID=https://weibo.com/u/{} -ImageSupplierID={} -ImageSupplierName=$SupplierName "$CRAWLER_INFO_HOME/$SupplierName/{}.xmp" -progress
-}
-function wb-database-update(){
-  for file in "$@"; do
-    SupplierName=$(exiftool -s3 -ImageSupplierName -- $file)
-    SupplierID=$(exiftool -s3 -ImageSupplierID -- $file)
-    exiftool -tagsfromfile $file $CRAWLER_INFO_HOME/$SupplierName/$SupplierID.xmp -progress
-  done
-}
-
-function wb-write-info-from-filename(){
-  exiftool -m -d "%Y%m%d" -progress -r $1 \
-    '-DateTimeOriginal<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$1}' \
-    '-BaseUrl<https://weibo.com/$ImageSupplierID/${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$2}' \
-    '-SeriesNumber<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$3}' \
-    '-Title<$Artist' \
-    '-ImageDescription<BaseUrl' \
-    '-Subject-=Weibo' '-Subject+=Weibo' \
-}
-
-
-alias exiftool-print="exiftool -@ ~/.config/photo_args.txt"
-alias ep=exiftool-print
-alias ef='exiftool -progress' 
-alias efo='exiftool -overwrite_original_in_place -P -progress'
-alias exiftool-default='exiftool -progress -overwrite_original_in_place -P'
-alias exiftool-rename='exiftool-default "-filename<\$Title-\${DateTimeOriginal}" -d   "%y-%m-%d%%-2c.%%e"  -if \$Title -if \$DateTimeOriginal'
-alias exiftool-time-weibo='exiftool-default "-DateTimeOriginal<\${Filename;s/_.*//}" -d "%Y%m%d" -if "not \$DateTimeOriginal" '
-alias exiftool-time-ins='exiftool-default "-DateTimeOriginal<\${Filename;s/\ .*//}" -d "%Y-%m-%d"'
-
-#######################################################################
-#                                alias                                #
-#######################################################################
-
 alias reveal='open -R'
-alias rmdir-empty='fd -H .DS_Store -x rm -v -- {}; fd -te -td -x grmdir -v -- {}'
 # gun
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias find=gfind
