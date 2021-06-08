@@ -1,3 +1,4 @@
+alias chrome='open -a "Google Chrome"'
 function histfile-clean(){
   tac $HISTFILE | awk '!x[$0]++' | tac | sponge $HISTFILE
 }

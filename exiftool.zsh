@@ -12,6 +12,39 @@ function ef-clean(){
   rmdir-empty
 }
 
+#######################################################################
+#                       get info from file name                       #
+#######################################################################
+
+function  ef-get-info-from-filename-for-weibo(){
+  exiftool -m -d "%Y%m%d" -progress -r $1 \
+    '-DateTimeOriginal<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$1}' \
+    '-BaseUrl<https://weibo.com/$ImageSupplierID/${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$2}' \
+    '-SeriesNumber<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$3}' \
+    '-Title<$Artist' \
+    -Status=updated -if 'not $Status' \
+    '-Subject-=Weibo' '-Subject+=Weibo' 
+}
+function  ef-get-info-from-filename-for-twitter() {
+  exiftool -m -d "%Y%m%d_%H%M%S" -progress -r $1  \
+    '-DateTimeOriginal<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
+    '-BaseUrl<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="https://twitter.com/$1/status/$2"}' \
+    '-SeriesNumber<${Filename;m/(.*)-(.*)-(.*)-(vid|img)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
+    '-ImageSupplierName=Twitter' \
+    '-ImageSupplierID<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
+    -Status=updated -if 'not $Status'
+}
+
+function ef-set-desc-as-url(){
+  exiftool -m -progress -r $1 \
+    '-ImageDescription<BaseUrl' -if '$BaseUrl' -if 'not $ImageDescription' -progress
+}
+
+#######################################################################
+#                          generate xmp info                          #
+#######################################################################
+
+
 
 # generate xmp from weibo user-id
 function ef-gen-xmp-for-weibo(){
