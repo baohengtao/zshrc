@@ -26,6 +26,10 @@ function ef-clean(){
   rmdir-empty
 }
 
+function ef-get-video-info-from-directory(){
+  exiftool '-Artist<${Directory;m/(.+)\/(.+)/;$_=$1}' '-Identifier<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress
+}
+
 #######################################################################
 #                       get info from file name                       #
 #######################################################################
