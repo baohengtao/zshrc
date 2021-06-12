@@ -1,3 +1,8 @@
+function install_dracula_for_python(){
+  cd $VIRTUAL_ENV
+  cd `fd -td --regex 'pygments$'`
+  wget 'https://raw.githubusercontent.com/dracula/pygments/master/dracula.py'
+}
 alias chrome='open -a "Google Chrome"'
 function histfile-clean(){
   tac $HISTFILE | awk '!x[$0]++' | tac | sponge $HISTFILE
