@@ -27,7 +27,7 @@ function ef-clean(){
 }
 
 function ef-get-video-info-from-directory(){
-  exiftool '-Artist<${Directory;m/(.+)\/(.+)/;$_=$1}' '-Identifier<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress
+  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext mp4 -if "\$filename !~ /^\./"
 }
 
 #######################################################################
