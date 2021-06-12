@@ -193,7 +193,7 @@ function ef-rename-xmp(){
 #######################################################################
 
 
-alias exiftool='exiftool -progress -if '$filename !~ /^\./' '
+alias exiftool='exiftool -progress -if "\$filename !~ /^\./"'
 alias exiftool-print="exiftool -fileorder filename -@ ~/.config/photo_args.txt"
 alias ep=exiftool-print
 alias ef=exiftool
