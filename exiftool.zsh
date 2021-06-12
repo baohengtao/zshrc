@@ -26,12 +26,16 @@ function ef-clean(){
   rmdir-empty
 }
 
+function ef-get-video-info-from-directory(){
+  exiftool '-Artist<${Directory;m/(.+)\/(.+)/;$_=$1}' '-Identifier<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress
+}
+
 #######################################################################
 #                       get info from file name                       #
 #######################################################################
 
 function ef-get-id-from-directory-for-weibo(){
-  fd -td --base-directory $1 --exact-depth 1 -x exiftool -ImageSupplierID={} -ImageSupplierName=Weibo -progress -r {} 
+  fd -td --base-directory $1 --exact-depth 1 -x exiftool -ImageSupplierID={} -ImageSupplierName=Weibo -progress -r {} -if "\$filename !~ /^\./"
 }
 function  ef-get-info-from-filename-for-weibo(){
   exiftool -m -d "%Y%m%d" -progress -r $1 \
