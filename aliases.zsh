@@ -28,6 +28,7 @@ alias rsync-update="rsync-default --update"
 alias rsync-synchronize="rsync-default --update --delete-after"
 alias rs=rsync-synchronize
 alias rsync-existing="rsync-default --update --delete-after --existing"
+alias rsync-with-delete='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 # for raspberry
 if command -v fdfind &> /dev/null; then
   alias fd=fdfind
@@ -94,7 +95,6 @@ alias ci="conda install"
 # for XDG
 # alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # file
-alias rsync-with-delete='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 
 # suffix aliases
 alias -s md=typora

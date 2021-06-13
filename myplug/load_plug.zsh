@@ -4,6 +4,7 @@ plug_dir="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的patter
 files=(
   # theme
   powerlevel10k/powerlevel9k.zsh-theme
+  fzf-tab/fzf-tab.plugin.zsh
   fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
   # search
   zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -13,7 +14,6 @@ files=(
   zsh-autosuggestions/zsh-autosuggestions.zsh
   # fzf
   zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
-  fzf-tab/fzf-tab.plugin.zsh
   myfzf/completion.zsh
   myfzf/key-bindings.zsh
   myfzf/fzf-setting.zsh
