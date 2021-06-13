@@ -27,7 +27,11 @@ function ef-clean(){
 }
 
 function ef-get-video-info-from-directory(){
-  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext mp4 -if "\$filename !~ /^\./"
+  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext mp4 -api largefilesupport=1 -if "\$filename !~ /^\./"
+}
+
+function ef-get-video-poster-info-from-directory(){
+  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext jpg -if "\$filename !~ /^\./"
 }
 
 #######################################################################
