@@ -28,3 +28,6 @@
 [submodule "myplug/myplug/zsh-completions"]
 	path = myplug/zsh-completions
 	url = git://github.com/zsh-users/zsh-completions.git
+[submodule "myplug/zsh-vi-mode"]
+	path = myplug/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git

@@ -19,3 +19,10 @@ export SAVEHIST=10000
 setopt appendhistory
 setopt SHARE_HISTORY
 export BAT_THEME="Dracula"
+
+
+# vim mode
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+source "$current/myplug/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+zvm_after_init_commands+=("source $current/myplug/load_plug.zsh")
+

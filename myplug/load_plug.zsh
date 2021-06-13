@@ -1,3 +1,5 @@
+
+
 plug_dir="${0%/*}"  # $0 当前文件； ${var%pattern} 将移除匹配的pattern
 files=(
   # theme
@@ -35,9 +37,9 @@ export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
 eval "$(fasd --init auto)"
 THEME_CODE=Dracula
 
+
 function empty {
 
-zplug "plugins/colored-man-pages", from:"oh-my-zsh"
 ## 补全
 zplug "zsh-users/zsh-completions"
 # zplug "zsh-users/zsh-autosuggestions"
