@@ -10,6 +10,7 @@ function histfile-clean(){
 
 
 alias reveal='open -R'
+alias cc='cd -'
 # gun
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias find=gfind
@@ -71,7 +72,7 @@ alias nf="nfasd"
 alias h=man
 alias sysbrew="/usr/local/Homebrew/bin/brew"
 alias :q=q
-alias so="source $ZDOTDIR/.zshrc"
+alias so="exec '$SHELL'"
 alias zshrc="nvim $ZDOTDIR/.zshrc"
 alias ua="unalias"
 alias ghweb="gh repo view --web"

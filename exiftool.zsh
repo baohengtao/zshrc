@@ -1,68 +1,25 @@
-alias crawler-clean='fd -e txt -e log -x rm {} && rmdir-empty'
-function ef-chrome(){
-  url=$(\exiftool $1 -BaseUrl -s3)
-  if [[ $url ]]; then
-    echo url
-    open -a 'Google Chrome' $url
-  else
-    echo 'Base URL not defined'
-  fi
-}
-
-alias ec=ef-chrome
-
-alias weibo-download='workon crawler && python -m weibo_spider --output_dir="$HOME/Cooper/TimeLine/new" --config_path="$XDG_CONFIG_HOME/crawler-weibo/config.json" '
-alias weibo-download-crawler='workon crawler && python -m weibo_crawler --output_dir="$HOME/Cooper/TimeLine/new-crawler" --config_path="$XDG_CONFIG_HOME/crawler-weibo/config.json" '
-
-alias weibo-csv-download='workon crawler && python -m weibo_spider --output_dir="$HOME/Cooper/TimeLine/csv-files" --config_path="$XDG_CONFIG_HOME/crawler-weibo/config-csv.json" '
-
-export CRAWLER_INFO_HOME=$XDG_CONFIG_HOME/crawler-info
 alias rmdir-empty='fd -H .DS_Store -x rm -v -- {}; fd -te -td -x grmdir -v -- {}'
 
-function ef-time-fix(){
-  exiftool '-XMP:DateCreated<DateTimeOriginal' -if '$DateTimeOriginal' $1 -progress
-  exiftool -DateTimeOriginal=  -if '$XMP:DateCreated eq $DateTimeOriginal' $1 -progress
-}
-function ef-description-fix(){
-  exiftool '-XMP:Description<ImageDescription' -if '$ImageDescription' -if 'not $Description' -r $1 -progress
-  exiftool -ImageDescription=  -if '$ImageDescription eq $Description' -r $1 -progress
-}
 
+alias ef-export-library-delete='osxphotos export --deleted-only ~/Cooper/TimeLine/hidelte/delete --update --db /Users/htao/Pictures/照片图库.photoslibrary'
+alias ef-export-library-hideen='osxphotos export --hidden ~/Cooper/TimeLine/hidelte/hidden --update --db /Users/htao/Pictures/照片图库.photoslibrary'
 
 # clean
-function ef-clean(){
-  fd -e mov_original -e jpg_original -e jpeg_original -e xmp_original -e png_original -e mp4_original -e gif_original -x rm -v -- {}
-  fd original_original -x rm -v -- {}
-  rmdir-empty 
+function ef-clean-file() {
+  mkdir -p ~/.exif_trash
+  fd -e mov_original -e jpg_original -e jpeg_original -e xmp_original -e png_original -e mp4_original -e gif_original -e HEIC_original -x mv -v -- {} ~/.exif_trash
+  fd original_original -x mv -v -- {} ~/.exif_trash
   rmdir-empty
   rmdir-empty
-}
-
-function ef-get-video-info-from-directory(){
-  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext mp4 -api largefilesupport=1 -if "\$filename !~ /^\./"
-}
-
-function ef-get-video-poster-info-from-directory(){
-  exiftool '-Artist<${Directory;m/..(.+)\/(.+)/;$_=$1}' '-AssetID<${Directory;m/(.+)\/(.+)/;$_=$2}' -r $1 -progress -ext jpg -if "\$filename !~ /^\./"
+  rmdir-empty
 }
 
 #######################################################################
 #                       get info from file name                       #
 #######################################################################
 
-function ef-get-id-from-directory-for-weibo(){
-  fd -td --base-directory $1 --exact-depth 1 -x exiftool -ImageSupplierID={} -ImageSupplierName=Weibo -progress -r {} -if "\$filename !~ /^\./"
-}
-function  ef-get-info-from-filename-for-weibo(){
-  exiftool -m -d "%Y%m%d" -progress -r $1 \
-    '-XMP:DateCreated<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$1}' \
-    '-BaseUrl<https://weibo.com/$ImageSupplierID/${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$2}' \
-    '-SeriesNumber<${Filename;m/(\d*)_([^\W_]+)_?(\d*).([a-z1-9]+)/;$_=$3}' \
-    -Status=updated -if 'not $Status' \
-    '-Subject-=Weibo' '-Subject+=Weibo' 
-}
-function  ef-get-info-from-filename-for-twitter() {
-  exiftool -m -d "%Y%m%d_%H%M%S" -progress -r $1  \
+function ef-get-info-from-filename-for-twitter() {
+  exiftool -m -d "%Y%m%d_%H%M%S" -progress -r "$1" \
     '-XMP:DateCreated<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
     '-BaseUrl<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="https://twitter.com/$1/status/$2"}' \
     '-SeriesNumber<${Filename;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
@@ -71,175 +28,44 @@ function  ef-get-info-from-filename-for-twitter() {
     -Status=updated -if 'not $Status'
 }
 
-function  ef-get-info-from-filename-for-pixiv(){
-  exiftool -m -d "%Y%m%d" -progress -r $1 \
-    '-SeriesNumber<${Filename;m/(\d+)_p(\d*).([a-z1-9]+)/;$_=$2}' \
-}
-function ef-set-desc-as-url(){
-  exiftool -m -progress -r $1 \
-    '-ImageDescription<BaseUrl' -if '$BaseUrl' -if 'not $ImageDescription' -progress
+function ef-get-info-from-filename-for-weibo() {
+  exiftool -m -d "%Y%m%d_%H%M%S" -progress -r "$1" \
+    '-XMP:SeriesNumber<${Filename;m/(.*)_(.*)_(.*)\.([a-z1-9]+)/;$_="$3"}' \
+    '-XMP:ImageSupplierName=Weibo' \
+    '-XMP:ImageUniqueID<${Filename;m/(.*)_(.*)_(.*)/;$_="$2"}' 
 }
 
-#######################################################################
-#                          generate xmp info                          #
-#######################################################################
-
-
-
-# generate xmp from weibo user-id
-function ef-gen-xmp-for-weibo(){
-  xmp_file="$CRAWLER_INFO_HOME/DataBase-Weibo/$1.xmp" 
-  exiftool -ImageCreatorID=https://weibo.com/u/$1 \
-    -ImageSupplierID=$1 \
-    -ImageSupplierName=Weibo \
-    $xmp_file \
-    -progress
+function ef-get-info-from-filename-for-pixiv() {
+  exiftool -m -d "%Y%m%d" -progress -r "$1" \
+    '-SeriesNumber<${Filename;m/(\d+)_p(\d*).([a-z1-9]+)/;$_=$2}'
 }
-
-# # generate xmp from twitter filenae
-# function ef-gen-xmp-for-twitter(){
-#   for file in "$@"; do
-#     user=`echo $file | perl -pe 'm/(.*)-(.*)-(.*)-(.*).([a-z0-9]*)/;$_="$1"'`
-#     post=`echo $file | perl -pe 'm/(.*)-(.*)-(.*)-(.*).([a-z0-9]*)/;$_="$2"'`
-#     date=`echo $file | perl -pe 'm/(.*)-(.*)-(.*)-(.*).([a-z0-9]*)/;$_="$3"'`
-#     img_id=`echo $file | perl -pe 'm/(.*)-(.*)-(.*)-(.*).([a-z0-9]*)/;$_="$4"'`
-#     xmp_file="$CRAWLER_INFO_HOME/DataBase-Twitter/$user.xmp"
-#     xmp_db_dir="$CRAWLER_INFO_HOME/Twitter"
-#     if [ ! -e $xmp_file ]; then
-#       exiftool -ImageCreatorID="https://twitter.com/$user" \
-#         -ImageSupplierName="Twitter" \
-#         -ImageSupplierID="$user" \
-#         "$xmp_file" \
-#         -progress
-
-#       exiftool -Artist=$user $xmp_file -if 'not $Artist'
-#       exiftool -Identifier=$user $xmp_file -if 'not $Identifier'
-
-#       exiftool -o . -directory=$xmp_db_dir '-filename<${Identifier}-${Artist}%E' $xmp_file
-#       exiftool -o . -directory=$xmp_db_dir '-filename<${ImageSupplierID}%E' $xmp_file
-
-#     fi
-#   done
-# }
-
-#######################################################################
-#                             Update infor from xmp                        #
-#######################################################################
-
-
-
-# update info by directory
-function ef-update-info-by-dir {
- exiftool -tagsfromfile "$CRAWLER_INFO_HOME/XMP-Pointer/%D.xmp" -progress -overwrite_original_in_place -r $1
-}
-# update info by file meta
-function ef-update-info-by-file-meta(){
-  for file in "$@"; do
-    SupplierID=$(\exiftool -s3 -ImageSupplierID -- $file )
-    SupplierName=$(\exiftool -s3 -ImageSupplierName -- $file )
-    if [[ $SupplierID ]] &&  [[ $SupplierName ]]; then
-      exiftool -tagsfromfile $CRAWLER_INFO_HOME/$SupplierName/$SupplierID.xmp -overwrite_original_in_place -progress -- $file
-    fi
-  done
-}
-
-# generate database
-function ef-gen-xmp-pointer(){
-  cd $CRAWLER_INFO_HOME && rm -r  XMP-Pointer
-  fd -td -x exiftool -Source={} {} -overwrite_original_in_place
-  all_dir=(`fd -td --exact-depth=1 `)
-  echo $all_dir
-  exiftool -o . -directory=XMP-Pointer '-filename<${Identifier}-${Artist}%E' $all_dir -if '$Identifier'
-  exiftool -o . -directory=XMP-Pointer '-filename<${Identifier}%E' $all_dir -if '$Identifier'
-  exiftool -o . -directory=XMP-Pointer '-filename<${ImageSupplierID}%E' $all_dir
-  exiftool -o . -directory=XMP-Pointer '-filename<${Artist}%E' Friends
-}
-
-
-
 
 #######################################################################
 #                   Organize Filename                          #
 #######################################################################
 
-
-
-function ef-testname(){
-  exiftool '-testname<${Artist}-${XMP:DateCreated}%+2c-${SeriesNumber}%E' -d %y-%m-%d -fileorder filename $1 -if '$SeriesNumber' -r
-  exiftool '-testname<${Artist}-${XMP:DateCreated}%+2c%E' -d %y-%m-%d -fileorder XMP:DateCreated -fileorder filename $1 -if ' not $SeriesNumber' -r
-}
-
-function ef-rename(){
-  exiftool '-filename<${Artist}-${XMP:DateCreated}%+2c-${SeriesNumber}%E' -d %y-%m-%d -fileorder filename  -if '$SeriesNumber' -r  $1 -progress
-  exiftool '-filename<${Artist}-${XMP:DateCreated}%+2c%E' -d %y-%m-%d -fileorder XMP:DateCreated -fileorder filename  -if ' not $SeriesNumber' -r $1 -progress 
-}
-
-function ef-rename-with-title(){
-  exiftool '-filename<${Title}-${XMP:DateCreated}%+2c-${SeriesNumber}%E' -d %y-%m-%d -fileorder filename  -if '$SeriesNumber' -r  $1 -progress
-  exiftool '-filename<${Title}-${XMP:DateCreated}%+2c%E' -d %y-%m-%d -fileorder XMP:DateCreated -fileorder filename  -if 'not $SeriesNumber' -r $1 -progress 
-}
-
-function ef-rename-new-dir(){
+function ef-rename-dir() {
   for file in "$@"; do
-    exiftool '-directory<new/${Identifier}-${Artist}' -r $file -progress -if '$Identifier' -if 'not $Artist eq $Identifier' 
-    exiftool '-directory<new/${Identifier}' -r $file -progress -if '$Identifier' -if '$Artist eq $Identifier' 
-    exiftool '-directory<new/${ImageSupplierID}' -r $file -progress -if 'not $Artist' -if '$ImageSupplierID'
+    exiftool '-directory<${Artist}' -r "$file" -progress -if '$Artist' '-filename=%f%+2c%E'
   done
 }
-
-function ef-rename-dir(){
-  for file in "$@"; do
-    exiftool '-directory<${Artist}' -r $file -progress  -if '$Artist' 
-  done
-}
-
-function ef-rename-dir-with-identifier(){
-  for file in "$@"; do
-    exiftool '-directory<${Identifier}-${Artist}' -r $file -progress -if '$Identifier' -if 'not $Artist eq $Identifier' 
-    exiftool '-directory<${Identifier}' -r $file -progress -if '$Identifier' -if '$Artist eq $Identifier' 
-  done
-
-}
-
-function ef-rename-dir-with-id(){
-  for file in "$@"; do
-    exiftool '-directory<${ImageSupplierID}' -r $file -progress -if '$ImageSupplierID'
-  done
-
-}
-
-
-function ef-testname-xmp(){
-  for file in "$@"; do
-    exiftool '-testname<${Identifier}-${Artist}.xmp'  $file -progress -if '$Identifier' -if 'not $Artist eq $Identifier' 
-    exiftool '-testname<${Identifier}.xmp'  $file -progress -if '$Identifier' -if '$Artist eq $Identifier' 
-  done
-}
-
-
-
-function ef-rename-xmp(){
-  for file in "$@"; do
-    exiftool '-filename<${Identifier}-${Artist}.xmp'  -progress -if '$Identifier' -if 'not $Artist eq $Identifier' -- $file 
-    exiftool '-filename<${Identifier}.xmp'  -progress -if '$Identifier' -if '$Artist eq $Identifier' --  $file   
-  done
-}
-
-
 
 #######################################################################
 #                                Alias                                #
 #######################################################################
+alias ef-flatten='exiftool -directory=. -r -progress'
+function ef-chrome() {
+  url=$(\exiftool "$1" -BlogUrl -s3)
+  if [[ $url ]]; then
+    echo url
+    open -a 'Google Chrome' "$url"
+  else
+    echo 'Blog URL not defined'
+  fi
+}
 
+alias ec=ef-chrome
 
 alias exiftool='exiftool -progress -if "\$filename !~ /^\./"'
-alias exiftool-print="exiftool -fileorder filename -@ ~/.config/photo_args.txt"
-alias ep=exiftool-print
+alias ep="exiftool -fileorder filename -@ ~/.config/photo_args.txt"
 alias ef=exiftool
-alias efo='exiftool -overwrite_original_in_place -P -progress'
-alias exiftool-default='exiftool -progress -overwrite_original_in_place -P'
-alias exiftool-rename='exiftool-default "-filename<\$Title-\${XMP:DateCreated}" -d   "%y-%m-%d%%-2c.%%e"  -if \$Title -if \$XMP:DateCreated'
-alias exiftool-time-weibo='exiftool-default "-XMP:DateCreated<\${Filename;s/_.*//}" -d "%Y%m%d" -if "not \$XMP:DateCreated" '
-alias exiftool-time-ins='exiftool-default "-XMP:DateCreated<\${Filename;s/\ .*//}" -d "%Y-%m-%d"'
-
-

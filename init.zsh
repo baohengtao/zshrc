@@ -3,9 +3,12 @@ if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source  "$ZDOTDIR/.p10k.zsh" 
 
+fpath=("$HOME/.zfunc" $fpath)
 autoload -Uz compinit # init completion system
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION 
 
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # remember to use single quote here!!!
+# give a preview of commandline arguments when completing `kill`
 
 current="${0%/*}"  
 source "$current/aliases.zsh"
@@ -14,15 +17,18 @@ source "$current/exiftool.zsh"
 
 ## history
 export HISTFILE=$XDG_DATA_HOME/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 setopt appendhistory
 setopt SHARE_HISTORY
 export BAT_THEME="Dracula"
 
 
-# vim mode
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
-source "$current/myplug/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-zvm_after_init_commands+=("source $current/myplug/load_plug.zsh")
+# # vim mode
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+# source "$current/myplug/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+# zvm_after_init_commands+=("source $current/myplug/load_plug.zsh")
+
+# fzf-tab
+# zstyle ':fzf-tab:*' fzf-bindings F3
 

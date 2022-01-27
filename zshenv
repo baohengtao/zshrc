@@ -1,7 +1,17 @@
+###### FLASKY
+export MAIL_USERNAME='htao.reg@gmail.com'
+export MAIL_PASSWORD='cjlpxtmjmexfjmhf'
+export FLASKY_ADMIN='baohengtao@gmail.com'
+
+
+
+############
 eval `/usr/libexec/path_helper -s`
 export MYPATH="$MYPATH:$HOME/.local/bin"
+export MYPATH="$MYPATH:$HOME/util"
 export MYPATH="$MYPATH:$HOME/.local/pyenv/bin"
-export MYPATH="$MYPATH:/Library/Frameworks/Python.framework/Versions/3.9/bin"
+# export MYPATH="$MYPATH:$HOME/Library/Python/3.9/bin"
+# export MYPATH="$MYPATH:/Library/Frameworks/Python.framework/Versions/3.9/bin"
 export MYPATH="$MYPATH:$HOME/.local/pipx/bin"
 export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 export MYPATH="$MYPATH:$HOME/.local/n/bin"
@@ -10,10 +20,10 @@ export MYPATH="$MYPATH:$HOME/.config/emacs-doom/bin"
 export MYPATH="$MYPATH:/opt/local/bin"
 export MYPATH="$MYPATH:/Applications/MacVim.app/Contents/bin"
 export MYPATH="$MYPATH:/Applications/goneovim.app/Contents/MacOS"
-export MYPATH="$MYPATH:/usr/local/bin"
-export MYPATH="$MYPATH:/usr/local/opt/openssl@1.1/bin" 
-export MYPATH="$MYPATH:/usr/local/opt/sqlite/bin" 
-export MYPATH="$MYPATH:/usr/local/Cellar/findutils/4.8.0_1"
+# export MYPATH="$MYPATH:/usr/local/bin"
+# export MYPATH="$MYPATH:/usr/local/opt/openssl@1.1/bin" 
+# export MYPATH="$MYPATH:/usr/local/opt/sqlite/bin" 
+# export MYPATH="$MYPATH:/usr/local/Cellar/findutils/4.8.0_1"
 export MYPATH="$MYPATH:$PATH"
 
 ## XDG
@@ -22,10 +32,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 ## PIP
-export WORKON_HOME="$HOME/.local/workon" 
+# export WORKON_HOME="$HOME/.local/workon" 
 export PYENV_ROOT="$HOME/.local/pyenv"
 export PIPX_HOME="$HOME/.local/pipx"
 export PIPX_BIN_DIR="$HOME/.local/pipx/bin"
+# export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+# export VIRTUALENVWRAPPER_VIRTUALENV='$HOME/.local/workon'
 
 # Node
 export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
@@ -33,7 +45,7 @@ export N_PREFIX="$HOME/.local/n"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 ## App
-export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/code-oss/extensions"
+# export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/code-oss/extensions"
 export ATOM_HOME="${XDG_DATA_HOME}/atom"
 
 # config
@@ -44,6 +56,9 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export DOOMDIR="$XDG_CONFIG_HOME"/emacs-doom-config
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/ipython/pythonstartup"
+
+export PTPYTHON_CONFIG_HOME="$XDG_CONFIG_HOME/ptpython"
 
 
 if [[ $(uname) == "Darwin" ]]; then

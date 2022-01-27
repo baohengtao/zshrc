@@ -10,16 +10,42 @@ if [ $(command -v virtualenvwrapper.sh) ]; then
   source virtualenvwrapper.sh
 fi
 
-# >>> conda initialize >>>
-__conda_setup="$('/Users/htao/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/htao/.local/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/htao/.local/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/htao/.local/miniconda3/bin:$PATH"
-    fi
+
+# PYENV
+export PATH="/Users/htao/.local/pyenv/shims:${PATH}"
+export PYENV_SHELL=zsh
+source "$PYENV_ROOT/libexec/../completions/pyenv.zsh"
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  activate|deactivate|rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")";;
+  *)
+    command pyenv "$command" "$@";;
+  esac
+}
+
+
+# # PYENV VIRTUALENV
+export PATH="/Users/htao/.local/pyenv/plugins/pyenv-virtualenv/shims:${PATH}";
+export PYENV_VIRTUALENV_INIT=1;
+_pyenv_virtualenv_hook() {
+  local ret=$?
+  if [ -n "$VIRTUAL_ENV" ]; then
+    eval "$(pyenv sh-activate --quiet || pyenv sh-deactivate --quiet || true)" || true
+  else
+    eval "$(pyenv sh-activate --quiet || true)" || true
+  fi
+  return $ret
+};
+typeset -g -a precmd_functions
+if [[ -z $precmd_functions[(r)_pyenv_virtualenv_hook] ]]; then
+  precmd_functions=(_pyenv_virtualenv_hook $precmd_functions);
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+

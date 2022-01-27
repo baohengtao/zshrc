@@ -20,7 +20,7 @@ files=(
   omz/arch-color-man.zsh
   )
 
-  fpath=("$plug_dir/zsh-completions/src" "$plug_dir/single/exiftool-zsh-completion" $fpath)
+  fpath=("$plug_dir/zsh-completions/src" "$plug_dir/poetry" $fpath)
 for file in $files; do
   filepath=$plug_dir/$file
   if [[ -e $filepath ]]; then
@@ -30,8 +30,8 @@ for file in $files; do
   fi
 done
 # for plugin zsh-history-substring-search
-bindkey  '^P' history-substring-search-up
-bindkey  '^N' history-substring-search-down
+bindkey  '^K' history-substring-search-up
+bindkey  '^J' history-substring-search-down
 # alias-tips.plugin
 export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
 eval "$(fasd --init auto)"
