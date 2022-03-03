@@ -33,7 +33,7 @@ pyenv() {
 
 
 # # PYENV VIRTUALENV
-export PATH="/Users/htao/.local/pyenv/plugins/pyenv-virtualenv/shims:${PATH}";
+export PATH="$HOME/.local/pyenv/plugins/pyenv-virtualenv/shims:${PATH}";
 export PYENV_VIRTUALENV_INIT=1;
 _pyenv_virtualenv_hook() {
   local ret=$?

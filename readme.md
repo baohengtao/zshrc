@@ -68,6 +68,17 @@ export PIPX_HOME="$HOME/.local/pipx"
 
 #### pyenv
 
+安装编译环境：
+```shell
+#Ubuntu/Debian/Mint:
+sudo apt-get update; sudo apt-get install make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+#Mac OS X:
+brew install openssl readline sqlite3 xz zlib
+```
+
+配置路径
 ```shell
 export MYPATH="$MYPATH:$HOME/.local/pyenv/bin"
 export PYENV_ROOT="$HOME/.local/pyenv"

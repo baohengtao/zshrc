@@ -7,8 +7,8 @@ alias ef-export-library-hideen='osxphotos export --hidden ~/Cooper/TimeLine/hide
 # clean
 function ef-clean-file() {
   mkdir -p ~/.exif_trash
-  fd -e mov_original -e jpg_original -e jpeg_original -e xmp_original -e png_original -e mp4_original -e gif_original -e HEIC_original -x mv -v -- {} ~/.exif_trash
-  fd original_original -x mv -v -- {} ~/.exif_trash
+  fd -e mov_original -e jpg_original -e jpeg_original -e xmp_original -e png_original -e mp4_original -e gif_original -e HEIC_original -X trash
+  fd original_original -X trash
   rmdir-empty
   rmdir-empty
   rmdir-empty
@@ -20,19 +20,12 @@ function ef-clean-file() {
 
 function ef-get-info-from-filename-for-twitter() {
   exiftool -m -d "%Y%m%d_%H%M%S" -progress -r "$1" \
-    '-XMP:DateCreated<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
-    '-BaseUrl<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="https://twitter.com/$1/status/$2"}' \
-    '-SeriesNumber<${Filename;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
-    '-ImageSupplierName=Twitter' \
-    '-ImageSupplierID<${Filename;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
-    -Status=updated -if 'not $Status'
-}
-
-function ef-get-info-from-filename-for-weibo() {
-  exiftool -m -d "%Y%m%d_%H%M%S" -progress -r "$1" \
-    '-XMP:SeriesNumber<${Filename;m/(.*)_(.*)_(.*)\.([a-z1-9]+)/;$_="$3"}' \
-    '-XMP:ImageSupplierName=Weibo' \
-    '-XMP:ImageUniqueID<${Filename;m/(.*)_(.*)_(.*)/;$_="$2"}' 
+    '-XMP:DateCreated<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
+    '-XMP:BlogUrl<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="https://twitter.com/$1/status/$2"}' \
+    '-XMP:SeriesNumber<${RawFilename;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
+    '-XMP:ImageSupplierName=Twitter' \
+    '-XMP:ImageCreatorName<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
+    '-XMP:ImageUniqueID<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$2"}' 
 }
 
 function ef-get-info-from-filename-for-pixiv() {

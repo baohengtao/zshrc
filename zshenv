@@ -20,10 +20,6 @@ export MYPATH="$MYPATH:$HOME/.config/emacs-doom/bin"
 export MYPATH="$MYPATH:/opt/local/bin"
 export MYPATH="$MYPATH:/Applications/MacVim.app/Contents/bin"
 export MYPATH="$MYPATH:/Applications/goneovim.app/Contents/MacOS"
-# export MYPATH="$MYPATH:/usr/local/bin"
-# export MYPATH="$MYPATH:/usr/local/opt/openssl@1.1/bin" 
-# export MYPATH="$MYPATH:/usr/local/opt/sqlite/bin" 
-# export MYPATH="$MYPATH:/usr/local/Cellar/findutils/4.8.0_1"
 export MYPATH="$MYPATH:$PATH"
 
 ## XDG
@@ -32,12 +28,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 ## PIP
-# export WORKON_HOME="$HOME/.local/workon" 
 export PYENV_ROOT="$HOME/.local/pyenv"
 export PIPX_HOME="$HOME/.local/pipx"
 export PIPX_BIN_DIR="$HOME/.local/pipx/bin"
-# export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-# export VIRTUALENVWRAPPER_VIRTUALENV='$HOME/.local/workon'
 
 # Node
 export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
@@ -45,7 +38,6 @@ export N_PREFIX="$HOME/.local/n"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 ## App
-# export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/code-oss/extensions"
 export ATOM_HOME="${XDG_DATA_HOME}/atom"
 
 # config
