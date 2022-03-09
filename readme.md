@@ -8,7 +8,7 @@ echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 
 
 
-### 设置 XDG 目录
+## 设置 XDG 目录
 
 在`~/.zshenv` 中设置 XDG 环境变量
 
@@ -19,44 +19,15 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 ```
 
-### 添加路径
 
-```sh
-export MYPATH="$MYPATH:$HOME/.local/bin"
-export MYPATH="$MYPATH:$PATH"
-```
 
 ## 程序安装
-
-### neovim
-
-树莓派上安装：
-
-```shell
-sudo snap install --classic nvim
-```
-若无 sudo 权限，可选择`nvim.appimage`
-
-安装 ctags
-
-```shell
-git clone https://github.com/universal-ctags/ctags.git
-cd ctags
-./autogen.sh
-./configure --prefix=$HOME/.local/ # defaults to /usr/local
-make && make install
-```
 
 
 
 ### Python
 
-#### virtualenv
 
-```shell
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export WORKON_HOME="$HOME/.local/workon"
-```
 
 #### pipx
 
@@ -78,10 +49,21 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 brew install openssl readline sqlite3 xz zlib
 ```
 
+```zsh
+brew install pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+```
+
+
+
 配置路径
+
 ```shell
-export MYPATH="$MYPATH:$HOME/.local/pyenv/bin"
+## PYENV
+export PATH="$PATH:/usr/local/bin"
 export PYENV_ROOT="$HOME/.local/pyenv"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 ```
 
 
@@ -215,5 +197,4 @@ function proxy_unset(){
 ```shell
 export "http_proxy=http://127.0.0.1:7890"; export "https_proxy=http://127.0.0.1:7890"; export "all_proxy=socks5://127.0.0.1:7891"
 ```
-
 
