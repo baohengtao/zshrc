@@ -14,9 +14,6 @@ files=(
   zsh-autosuggestions/zsh-autosuggestions.zsh
   # fzf
   zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
-  myfzf/completion.zsh
-  myfzf/key-bindings.zsh
-  myfzf/fzf-setting.zsh
   omz/arch-color-man.zsh
   )
 

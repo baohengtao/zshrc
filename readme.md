@@ -1,31 +1,23 @@
 ## 初始化环境
 
+### 安装
+1.添加如下内容至`~/.zshenv`, 以设置XDG路径以及ZSH配置路径: 
 ```zsh
-ZDOTDIR="$HOME/.config/zsh"
-git clone git@github.com:baohengtao/zshrc.git $ZDOTDIR/main
+## XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+```
+
+2. 克隆仓库, 并加载`init.zsh`文件.
+```zsh
+git clone --recurse-submodules -j8 git@github.com:baohengtao/zshrc.git $ZDOTDIR/main
 echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 ```
 
 
 
-## 设置 XDG 目录
-
-在`~/.zshenv` 中设置 XDG 环境变量
-
-```shell
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-```
-
-
-
-## 程序安装
-
-
-
-### Python
 
 
 
@@ -36,24 +28,6 @@ export MYPATH="$MYPATH:$HOME/.local/pipx/bin"
 export PIPX_BIN_DIR="$HOME/.local/pipx/bin"
 export PIPX_HOME="$HOME/.local/pipx"
 ```
-
-#### pyenv
-
-安装编译环境：
-```shell
-#Ubuntu/Debian/Mint:
-sudo apt-get update; sudo apt-get install make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-#Mac OS X:
-brew install openssl readline sqlite3 xz zlib
-```
-
-```zsh
-brew install pyenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-```
-
 
 
 配置路径
