@@ -9,6 +9,8 @@ function histfile-clean(){
 }
 
 
+alias jupyter-lab='jupyter-lab console --kernel=$(pyenv version)'
+
 alias reveal='open -R'
 alias cc='cd -'
 # gun
