@@ -56,8 +56,7 @@ export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
 安装
 
 ```shell
-curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-bash n stable
+brew install n
 npm install --global yarn
 yarn config set global-folder ~/.local/yarn
 yarn config set dir ~/.local/yarn
@@ -106,17 +105,6 @@ current_file(){
 
 
 
-
-
-### fzf
-
-```shell
-git clone --depth 1 https://github.com/junegunn/fzf.git  $HOME/.local/lib/fzf
-cd $HOME/.local/lib/fzf
-install
-cd $HOME/.local/bin
-ln -s ../lib/fzf/bin/fzf fzf
-```
 
 
 
