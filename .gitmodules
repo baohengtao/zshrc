@@ -42,3 +42,6 @@
 	path = myplug/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode.git
 	shallow = true
+[submodule "myplug/fzf-fasd"]
+	path = myplug/fzf-fasd
+	url = https://github.com/wookayin/fzf-fasd

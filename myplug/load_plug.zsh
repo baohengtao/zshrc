@@ -15,9 +15,10 @@ files=(
   # fzf
   zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   omz/arch-color-man.zsh
+  fzf-fasd/fzf-fasd.plugin.zsh
   )
 
-  fpath=("$plug_dir/zsh-completions/src" "$plug_dir/poetry" $fpath)
+fpath=("$plug_dir/zsh-completions/src" "$plug_dir/poetry" $fpath)
 for file in $files; do
   filepath=$plug_dir/$file
   if [[ -e $filepath ]]; then
@@ -34,13 +35,3 @@ export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
 eval "$(fasd --init auto)"
 THEME_CODE=Dracula
 
-
-function empty {
-
-## 补全
-zplug "zsh-users/zsh-completions"
-# zplug "zsh-users/zsh-autosuggestions"
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-## mix
-zplug "plugins/command-not-found", from:"oh-my-zsh"
-}

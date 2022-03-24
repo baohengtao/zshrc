@@ -67,8 +67,7 @@ yarn global add neovim # 添加对 neovim 的支持
 ### fasdf
 
 ```shell
-git clone https://github.com/clvv/fasd
-PREFIX=$HOME/.local make install
+brew install fasd
 ```
 
 添加如下内容至 zshrc

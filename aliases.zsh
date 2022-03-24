@@ -61,19 +61,14 @@ export FORGIT_NO_ALIASES=1
 
 alias rpi="ssh rpi"
 alias thu="ssh thu"
-alias arch="ssh arch"
 
-alias pandoc-tex="pandoc --mathjax --css ~/pandoc.css -s "
 alias ft="fortune -e   tang300 song100 | cowsay"
-alias deploy="j hugo; rm public/*; hugo; cd public; ga .; gcamr; gp"
 
 alias hs="hugo server"
 alias ty="typora"
 alias q="exit"
 alias nf="nfasd"
-alias h=man
 alias sysbrew="/usr/local/Homebrew/bin/brew"
-alias :q=q
 alias so="exec '$SHELL'"
 alias zshrc="nvim $ZDOTDIR/.zshrc"
 alias ua="unalias"
@@ -81,22 +76,9 @@ alias ghweb="gh repo view --web"
 # editor
 alias nv="nvim"
 alias nvc="nvim ."
-alias gv="gvim"
-alias vi="nvim"
 alias ed="emacs --with-profile doom"
 alias ev='emacs --with-profile vanilla'
-# python
-alias da="deactivate"
-alias ca="conda activate"
-alias cda="conda deactivate"
-alias torch="conda activate torch"
-alias main="workon main"
-alias to=torch
-alias jl="torch && jupyter-lab"
-alias pi="pip install"
-alias ci="conda install"
 # for XDG
-# alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # file
 
 # suffix aliases
@@ -142,21 +124,9 @@ alias tat="ta -t"
 alias a="fasd -a"
 alias d="fasd -d"
 alias f="fasd -f"
-
-alias ac="a -B current_folder"
 alias ah="a -B home_folder"
-alias fc="f -B current_folder"
-alias v="f -e nvim"
-alias vc= "fc -e nvim"
-alias co="f -e code"
+alias ac="a -B current_folder"
 
-alias o="ac -e open"
-alias t="ac -e typora"
-alias th="ah -e typora"
-alias p="ac -e pixea"
-alias ph="ah -e pixea"
-alias i="a -e iina"
-alias ic="ac -e iina"
 
 
 alias s="fasd -si"
@@ -164,11 +134,9 @@ alias sd="s -d"
 alias sf="s -f"
 
 alias z="fasd_cd -d"
-alias j="z -i"
-alias jj="j -B  current_folder"
-alias jc="j -b  current_folder"
-alias jd="j -b  desk_folder"
-alias jh="j -B  home_folder"
+alias zC="z -B  current_folder"
+alias zc="z -b  current_folder"
+alias zh="z -B  home_folder"
 
 
 
@@ -228,13 +196,9 @@ alias fgl="forgit::log"
 # git
 alias ga='git add'
 alias gsub='git submodule'
-alias g=git
 alias gs='git status'
 alias gss='git status -s'
 alias gc="git commit -v"
-alias gca="gc  -a"
-alias gcam="gca -m"
-alias gcamr="gcam 'regular update'"
 alias gb="git branch"
 alias gbD="git branch -D"
 alias gbd="git branch -d"
@@ -263,10 +227,7 @@ alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 
 
 
-# alias rsync-copy="rsync -avz --progress -h"
-# alias rsync-move="rsync -avz --progress -h --remove-source-files"
-# alias rsync-update="rsync -avzu --progress -h"
-# alias rsync-synchronize="rsync -avzu --delete --progress -h"
+
 
 
 # alias dl="docker ps -l -q"
