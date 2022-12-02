@@ -20,12 +20,12 @@ function ef-clean-file() {
 
 function ef-get-info-from-filename-for-twitter() {
   exiftool -m -d "%Y%m%d_%H%M%S" -progress -r "$1" \
-    '-XMP:DateCreated<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
+    '-XMP:DateCreated<${XMP:RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$3"}' \
     '-XMP:BlogUrl<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="https://twitter.com/$1/status/$2"}' \
-    '-XMP:SeriesNumber<${RawFilename;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
+    '-XMP:SeriesNumber<${RawFileName;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
     '-XMP:ImageSupplierName=Twitter' \
-    '-XMP:ImageCreatorName<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
-    '-XMP:ImageUniqueID<${RawFilename;m/(.*)-(.*)-(.*)-(.*)/;$_="$2"}' 
+    '-XMP:ImageCreatorName<${RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
+    '-XMP:ImageUniqueID<${RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$2"}' 
 }
 
 function ef-get-info-from-filename-for-pixiv() {
