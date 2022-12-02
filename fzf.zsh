@@ -27,4 +27,3 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
-

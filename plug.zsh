@@ -21,7 +21,7 @@ repos=(
 	zsh-users/zsh-completions
 	jeffreytse/zsh-vi-mode.git
 	wookayin/fzf-fasd
-
+  ael-code/zsh-colored-man-pages
 )
 
 # now load your plugins
@@ -31,6 +31,17 @@ bindkey  '^K' history-substring-search-up
 bindkey  '^J' history-substring-search-down
 # alias-tips.plugin
 export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 eval "$(fasd --init auto)"
 THEME_CODE=Dracula
 
+
+function plugin-update {
+  ZPLUGINDIR=${ZPLUGINDIR:-$HOME/.config/zsh/plugins}
+  for d in $ZPLUGINDIR/*/.git(/); do
+    echo "Updating ${d:h:t}..."
+    command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+  done
+}
