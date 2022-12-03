@@ -12,7 +12,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # 
 
 current="${0%/*}"  
 source "$current/aliases.zsh"
-# source "$current/archieve/myplug/load_plug.zsh"
 source "$current/plug.zsh"
 source "$current/exiftool.zsh"
 source "$current/fzf.zsh"

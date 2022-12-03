@@ -19,7 +19,7 @@ repos=(
 	Aloxaf/fzf-tab
 	zsh-users/zsh-autosuggestions
 	zsh-users/zsh-completions
-	jeffreytse/zsh-vi-mode.git
+	# jeffreytse/zsh-vi-mode.git
 	wookayin/fzf-fasd
   ael-code/zsh-colored-man-pages
 )
@@ -43,5 +43,11 @@ function plugin-update {
   for d in $ZPLUGINDIR/*/.git(/); do
     echo "Updating ${d:h:t}..."
     command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+  done
+}
+
+function plugin-ls {
+  for d in $ZPLUGINDIR/*/.git; do
+    git -C "${d:h}" remote get-url origin
   done
 }

@@ -64,7 +64,7 @@ yarn config set prefix ~/.local/yarn
 yarn global add neovim # 添加对 neovim 的支持
 ```
 
-### fasdf
+### fasd
 
 ```shell
 brew install fasd
@@ -101,6 +101,7 @@ current_file(){
 }
 
 ```
+
 
 
 
