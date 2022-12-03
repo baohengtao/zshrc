@@ -33,9 +33,6 @@ alias rs=rsync-synchronize
 alias rsync-existing="rsync-default --update --delete-after --existing"
 alias rsync-with-delete='rsync --delete --backup --backup-dir=./delete_files."$(date +%m%d-%H:%M:%S)"'
 # for raspberry
-if command -v fdfind &> /dev/null; then
-  alias fd=fdfind
-fi
 
 function set-proxy(){
   if [[ -z $HTTP_PORT || -z $SOCKS_PORT ]]; then
