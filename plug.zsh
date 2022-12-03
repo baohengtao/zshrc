@@ -17,7 +17,6 @@ repos=(
   # bigH/git-fuzzy
 	wfxr/forgit
 	djui/alias-tips
-	changyuheng/zsh-interactive-cd
 	zsh-users/zsh-autosuggestions
 	zsh-users/zsh-completions
 	# jeffreytse/zsh-vi-mode.git
