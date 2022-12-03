@@ -2,6 +2,7 @@
 
 # 使用 `;` 触发搜索
 export FZF_COMPLETION_TRIGGER=';'
+export FZF_TMUX_HEIGHT='75%'
 # 设置UI选项
 export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border --multi --info=inline --exact'
 
@@ -28,11 +29,6 @@ _fzf_comprun() {
   esac
 }
 
-# fzf-tab
-FZF_TAB_COMMAND=(
-    fzf-tmux
-    --height=${FZF_TMUX_HEIGHT:=75%}
-)
 zstyle ":fzf-tab:*" command $FZF_TAB_COMMAND
 _comp_options+=(globdots) # enable hidden file completion
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle' 'ctrl-a:toggle-all'
