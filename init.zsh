@@ -1,8 +1,6 @@
 autoload -Uz compinit # init completion system
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION 
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # remember to use single quote here!!!
-# give a preview of commandline arguments when completing `kill`
 
 current="${0%/*}"  
 source "$current/aliases.zsh"

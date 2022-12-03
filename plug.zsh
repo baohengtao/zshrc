@@ -8,15 +8,16 @@ fi
 source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
 # make list of the Zsh plugins you use
+# fzf-tab must before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting!!
 repos=(
   romkatv/powerlevel10k
+  Aloxaf/fzf-tab
   zdharma/fast-syntax-highlighting
   zsh-users/zsh-history-substring-search
   # bigH/git-fuzzy
 	wfxr/forgit
 	djui/alias-tips
 	changyuheng/zsh-interactive-cd
-	Aloxaf/fzf-tab
 	zsh-users/zsh-autosuggestions
 	zsh-users/zsh-completions
 	# jeffreytse/zsh-vi-mode.git
@@ -36,6 +37,8 @@ export ZSH_PLUGINS_ALIAS_TIPS_REVEAL=1
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 eval "$(fasd --init auto)"
 THEME_CODE=Dracula
+
+
 
 
 function plugin-update {

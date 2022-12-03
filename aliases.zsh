@@ -151,12 +151,12 @@ alias less="less -r"
 
 if command -v exa &> /dev/null; then
   alias l='exa --icons --git --time-style iso --created'
-  alias lt='l -T'
+  alias lt='l --tree'
   alias lt2='lt -L2'
   alias lt3='lt -L3'
   alias lt4='lt -L4'
-  alias ll='l -lhg --octal-permissions --no-permissions '
-  alias llh='ll -H -i'
+  alias ll='l --long --header --group --octal-permissions --no-permissions '
+  alias llh='ll --links --inode'
   alias lh='llh'
 else
   alias l=ls
