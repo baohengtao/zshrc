@@ -29,6 +29,11 @@ _fzf_comprun() {
 }
 
 # fzf-tab
+FZF_TAB_COMMAND=(
+    fzf-tmux
+    --height=${FZF_TMUX_HEIGHT:=75%}
+)
+zstyle ":fzf-tab:*" command $FZF_TAB_COMMAND
 _comp_options+=(globdots) # enable hidden file completion
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle' 'ctrl-a:toggle-all'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --tree -L2 $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --tree -L2 $realpath | head -200'
