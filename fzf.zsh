@@ -18,18 +18,20 @@ export FZF_CTRL_T_COMMAND="fd"
 _fzf_compgen_path() { fd  --hidden --exclude ".git" . "$1"}
 _fzf_compgen_dir() { fd --type d  --hidden   --exclude ".git" . "$1"}
 
-_fzf_comprun() {
-  local command=$1
-  shift
-  case "$command" in
-    cd)           fzf "$@" --preview 'exa --icons --tree -L2 {} | head -200' ;;
-    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
-    ssh)          fzf "$@" --preview 'dig {}' ;;
-    *)            fzf "$@" ;;
-  esac
-}
+# _fzf_comprun() {
+#   local command=$1
+#   shift
+#   case "$command" in
+#     cd)           fzf "$@" --preview 'exa --icons --tree -L2 {} | head -200' ;;
+#     export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+#     ssh)          fzf "$@" --preview 'dig {}' ;;
+#     *)            fzf "$@" ;;
+#   esac
+# }
 
-zstyle ":fzf-tab:*" command $FZF_TAB_COMMAND
 _comp_options+=(globdots) # enable hidden file completion
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle' 'ctrl-a:toggle-all'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --tree -L2 $realpath | head -200'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+export LESSOPEN='|~/.lessfilter %s'
+
