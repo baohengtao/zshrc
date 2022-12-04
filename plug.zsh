@@ -14,12 +14,10 @@ repos=(
   Aloxaf/fzf-tab
   zdharma/fast-syntax-highlighting
   zsh-users/zsh-history-substring-search
-  # bigH/git-fuzzy
 	wfxr/forgit
 	djui/alias-tips
 	zsh-users/zsh-autosuggestions
 	zsh-users/zsh-completions
-	# jeffreytse/zsh-vi-mode.git
 	wookayin/fzf-fasd
   ael-code/zsh-colored-man-pages
 )
