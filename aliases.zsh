@@ -50,7 +50,6 @@ function unset-proxy(){
 }
 
 alias dco=docker-compose
-export EDITOR=nvim
 export BROWSER=open
 export XIVIEWER=pixea
 export Player=iina
@@ -93,9 +92,6 @@ else
 fi
 
 # alternative
-if command -v trash &> /dev/null; then
-  alias rm="trash -v"
-fi
 
 if command -v glances &> /dev/null; then
   alias top='glances'
