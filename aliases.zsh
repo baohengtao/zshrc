@@ -141,7 +141,6 @@ alias r=ranger
 # cd
 setopt autocd
 alias ...='cd ../../'
-alias less="lesspipe.sh "
 
 # ls
 

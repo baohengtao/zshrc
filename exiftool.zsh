@@ -4,15 +4,6 @@ alias rmdir-empty='fd -H .DS_Store -x rm -v -- {}; fd -te -td -x grmdir -v -- {}
 alias ef-export-library-delete='osxphotos export --deleted-only ~/Cooper/TimeLine/hidelte/delete --update --db /Users/htao/Pictures/照片图库.photoslibrary'
 alias ef-export-library-hideen='osxphotos export --hidden ~/Cooper/TimeLine/hidelte/hidden --update --db /Users/htao/Pictures/照片图库.photoslibrary'
 
-# clean
-function ef-clean-file() {
-  mkdir -p ~/.exif_trash
-  fd -e mov_original -e jpg_original -e jpeg_original -e xmp_original -e png_original -e mp4_original -e gif_original -e HEIC_original -X trash
-  fd original_original -X trash
-  rmdir-empty
-  rmdir-empty
-  rmdir-empty
-}
 
 #######################################################################
 #                       get info from file name                       #

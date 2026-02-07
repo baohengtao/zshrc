@@ -34,7 +34,6 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 # disable preview for options and argument
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
-export LESSOPEN='|~/.lessfilter %s'
 
 
 #Note: This doesn't work if you are using Homebrew's completion for git.
