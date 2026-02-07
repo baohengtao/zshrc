@@ -25,7 +25,7 @@ function ef-get-info-from-filename-for-twitter() {
     '-XMP:SeriesNumber<${RawFileName;m/(.*)-(.*)-(.*)-(vid|img|gif)([0-9]+).([a-z1-9]+)/;$_="$5"}' \
     '-XMP:ImageSupplierName=Twitter' \
     '-XMP:ImageCreatorName<${RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$1"}' \
-    '-XMP:ImageUniqueID<${RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$2"}' 
+    '-XMP:ImageUniqueID<${RawFileName;m/(.*)-(.*)-(.*)-(.*)/;$_="$2"}'
 }
 
 function ef-get-info-from-filename-for-pixiv() {

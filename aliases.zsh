@@ -235,7 +235,7 @@ alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 # dstop() { docker stop $(docker ps -a -q); } # Stop all containers
 # alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)' # Stop and Remove all containers
 # dri() { docker rmi $(docker images -q); } # Remove all images
-# dbu() { docker build -t=$1 .; } # Dockerfile build, e.g., $dbu tcnksm/test 
+# dbu() { docker build -t=$1 .; } # Dockerfile build, e.g., $dbu tcnksm/test
 # dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }  # Show all alias related docker
 # dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; } # Bash into running container
 
@@ -248,7 +248,6 @@ alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 # zsh is able to auto-do some kungfoo
 # depends on the SUFFIX :)
 # auto open in relative application when file typed.
-# 
 
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
@@ -276,6 +275,6 @@ if is-at-least 4.2.0; then
   _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
   for ft in $_media_fts; do alias -s $ft='$Player'; done
 
- 
+
 fi
 

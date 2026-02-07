@@ -1,8 +1,8 @@
 autoload -Uz compinit # init completion system
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION 
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 
-current="${0%/*}"  
+current="${0%/*}"
 source "$current/aliases.zsh"
 source "$current/plug.zsh"
 source "$current/exiftool.zsh"

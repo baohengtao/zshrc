@@ -7,7 +7,7 @@ export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border --multi --info=i
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS --preview 'exa --icons --tree -L2 {} | head -200'"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview '( ( [ ! -f {} ] && exa --icons  --tree -L2 {} | head -200) || ( highlight -O ansi {} || bat --color=always {})  ) 2> /dev/null' "
 #export FZF_CTRL_R_OPTS=''
-#export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse" 
+#export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse"
 # 设置执行命令
 export FZF_DEFAULT_COMMAND="fd"
 export FZF_ALT_C_COMMAND="fd --type d --max-depth 4 --hidden  . ~"
@@ -32,7 +32,7 @@ zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle' 'ctrl-a:toggle-all'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --tree -L2 $realpath | head -200'
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 # disable preview for options and argument
-zstyle ':fzf-tab:complete:*:options' fzf-preview 
+zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 export LESSOPEN='|~/.lessfilter %s'
 
