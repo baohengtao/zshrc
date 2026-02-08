@@ -108,7 +108,7 @@ alias sudo='sudo -E' #keep user environment
 # tmux
 alias td="tmux detach"
 alias tl="tmux ls"
-alias tn="tmux new -d -t"
+alias tn="tmux new -t"
 alias ta="tmux attach "
 alias tnw="tmux new-window -n"
 alias tat="ta -t"
@@ -144,8 +144,8 @@ alias ...='cd ../../'
 
 # ls
 
-if command -v exa &> /dev/null; then
-  alias l='exa --icons --git --time-style iso --created'
+if command -v eza &> /dev/null; then
+  alias l='eza --icons --git --time-style iso --created --links'
   alias lt='l --tree'
   alias lt2='lt -L2'
   alias lt3='lt -L3'
