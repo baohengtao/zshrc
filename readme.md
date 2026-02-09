@@ -1,7 +1,9 @@
-## 初始化环境
 
-### 安装
-1.添加如下内容至`~/.zshenv`, 以设置XDG路径以及ZSH配置路径: 
+
+## 安装ZSH配置
+
+1.添加如下内容至`~/.zshenv`, 以设置XDG路径以及ZSH配置路径:
+
 ```zsh
 ## XDG
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -18,62 +20,21 @@ echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 
 
 
+## 安装依赖
 
-
-
-#### pipx
-
-```shell
-export MYPATH="$MYPATH:$HOME/.local/pipx/bin"
-export PIPX_BIN_DIR="$HOME/.local/pipx/bin"
-export PIPX_HOME="$HOME/.local/pipx"
+```zsh
+brew install python pipx pyenv pyenv-virtualenv
+brew install coreutils fd fzf eza
 ```
 
+### 配置 Fasd & FZF
 
-配置路径
-
-```shell
-## PYENV
-export PATH="$PATH:/usr/local/bin"
-export PYENV_ROOT="$HOME/.local/pyenv"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-```
-
-
-
-### NodeJS
-
-设置环境变量如下
-
-```shell
-export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/export N_PREFIX="$HOME/.local/n"
-export MYPATH="$MYPATH:$HOME/.local/n/bin"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
-```
-
-安装
-
-```shell
-brew install n
-npm install --global yarn
-yarn config set global-folder ~/.local/yarn
-yarn config set dir ~/.local/yarn
-yarn config set prefix ~/.local/yarn
-yarn global add neovim # 添加对 neovim 的支持
-```
-
-### fasd
-
-```shell
-brew install fasd
-```
-
-添加如下内容至 zshrc
+https://github.com/clvv/fasd
+按步骤安装后，添加如下内容至 zshrc
 
 ```shell
 eval "$(fasd --init auto)"
+source <(fzf --zsh)
 ```
 
 配置`~/.fasdrc` 如下
@@ -102,9 +63,59 @@ current_file(){
 
 ```
 
+### 配置Pipx
 
 
+```shell
+#.zshenv配置环境变量
+export PIPX_BIN_DIR="$HOME/.local/pipx/bin"
+export PIPX_HOME="$HOME/.local/pipx"
+#.zprofile添加路径
+export PATH="$PATH:$HOME/.local/pipx/bin"
+#.zshrc添加命令补全（具体参考 pipx completions）
+eval "$(register-python-argcomplete pipx)"
+```
 
+
+使用pipx安装工具
+
+```zhs
+pipx install tldr
+```
+
+### 配置Pyenv
+
+```shell
+#.zshenv配置环境变量
+export PYENV_ROOT="$HOME/.local/pyenv"
+#.zprofile
+export PATH="$PYENV_ROOT/bin:$PATH"
+#.zshrc
+eval "$(pyenv init - zsh)"
+```
+
+
+### NodeJS
+
+设置环境变量如下
+
+```shell
+export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/export N_PREFIX="$HOME/.local/n"
+export MYPATH="$MYPATH:$HOME/.local/n/bin"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export MYPATH="$MYPATH:$HOME/.local/yarn/bin"
+```
+
+安装
+
+```shell
+brew install n
+npm install --global yarn
+yarn config set global-folder ~/.local/yarn
+yarn config set dir ~/.local/yarn
+yarn config set prefix ~/.local/yarn
+yarn global add neovim # 添加对 neovim 的支持
+```
 
 
 
