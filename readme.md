@@ -23,8 +23,9 @@ echo 'source  "$ZDOTDIR/main/init.zsh" ' >> $ZDOTDIR/.zshrc
 ## 安装依赖
 
 ```zsh
-brew install python pipx pyenv pyenv-virtualenv
+brew install python pipx pyenv pyenv-virtualenv 
 brew install coreutils fd fzf eza
+brew install tmux
 ```
 
 ### 配置 Fasd & FZF
@@ -93,6 +94,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 #.zshrc
 eval "$(pyenv init - zsh)"
 ```
+
+## Tmux
+
+参考 [baohengtao/tmux](https://github.com/baohengtao/tmux)
+
 
 
 ### NodeJS

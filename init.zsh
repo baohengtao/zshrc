@@ -13,8 +13,9 @@ source "$current/fzf.zsh"
 export HISTFILE=$ZDOTDIR/data/zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
-setopt appendhistory
+setopt APPEND_HISTORY
 setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 export BAT_THEME="Dracula"
 
 
